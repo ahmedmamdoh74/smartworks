@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', 'IBM Plex Sans Arabic', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #002045 0%, #00677d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#ffddba",
+                      "surface-variant": "#d3e4fe",
+                      "on-surface-variant": "#43474e",
+                      "primary-fixed-dim": "#adc7f7",
+                      "on-tertiary-fixed-variant": "#633f0f",
+                      "inverse-on-surface": "#eaf1ff",
+                      "secondary-fixed": "#b3ebff",
+                      "inverse-primary": "#adc7f7",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#455f88",
+                      "surface-container": "#e5eeff",
+                      "tertiary-fixed-dim": "#f2bc82",
+                      "on-error": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-container": "#1a365d",
+                      "primary-fixed": "#d6e3ff",
+                      "on-tertiary-fixed": "#2b1700",
+                      "surface-dim": "#cbdbf5",
+                      "primary": "#002045",
+                      "secondary-container": "#50d9fe",
+                      "on-primary-fixed-variant": "#2d476f",
+                      "secondary": "#00677d",
+                      "on-tertiary": "#ffffff",
+                      "outline-variant": "#c4c6cf",
+                      "on-primary-fixed": "#001b3c",
+                      "on-primary-container": "#86a0cd",
+                      "on-secondary-container": "#005c70",
+                      "surface-container-high": "#dce9ff",
+                      "inverse-surface": "#213145",
+                      "surface": "#f8f9ff",
+                      "surface-bright": "#f8f9ff",
+                      "outline": "#74777f",
+                      "error-container": "#ffdad6",
+                      "on-surface": "#0b1c30",
+                      "tertiary-container": "#4f2e00",
+                      "on-secondary-fixed-variant": "#004e5f",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed": "#001f27",
+                      "surface-container-low": "#eff4ff",
+                      "secondary-fixed-dim": "#4cd6fb",
+                      "tertiary": "#321b00",
+                      "error": "#ba1a1a",
+                      "background": "#f8f9ff",
+                      "on-background": "#0b1c30",
+                      "on-secondary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "section-gap": "80px",
+                      "base": "8px",
+                      "margin-desktop": "48px",
+                      "container-max": "1280px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "label-md": ["IBM Plex Sans Arabic", "sans-serif"],
+                      "display-lg": ["IBM Plex Sans Arabic", "sans-serif"],
+                      "body-md": ["Inter", "sans-serif"],
+                      "body-lg": ["Inter", "sans-serif"],
+                      "headline-md": ["IBM Plex Sans Arabic", "sans-serif"],
+                      "headline-sm": ["IBM Plex Sans Arabic", "sans-serif"],
+                      "display-lg-mobile": ["IBM Plex Sans Arabic", "sans-serif"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-md": ["30px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background antialiased">
+<!-- Top Navigation Bar -->
+<header class="bg-surface/90 backdrop-blur-md font-label-md text-label-md docked full-width top-0 sticky border-b border-outline-variant z-50 shadow-sm">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-20">
+<div class="flex items-center gap-gutter">
+<div class="font-headline-sm text-headline-sm font-bold text-primary">TechNexus Solutions</div>
+<nav class="hidden md:flex gap-6">
+<a class="text-secondary border-b-2 border-secondary pb-1" href="#">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Solutions</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">About Us</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Case Studies</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Careers</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-on-surface-variant cursor-pointer hover:text-primary">EN/AR</span>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-bold hover:opacity-80 active:scale-95 transition-all">Request Demo</button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative py-section-gap overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="z-10">
+<span class="inline-block px-4 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-md mb-6">Digital Transformation for MENA</span>
+<h1 class="font-display-lg text-display-lg mb-6 leading-tight">نظام إدارة الموارد البشرية المتكامل</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-xl">حلول تقنية متطورة مصممة خصيصاً لتلبية احتياجات الشركات في الشرق الأوسط، تجمع بين الكفاءة التشغيلية والامتثال التام للقوانين المحلية.</p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold flex items-center gap-2 shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform">
+<span>ابدأ التجربة المجانية</span>
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="border-2 border-primary text-primary px-8 py-4 rounded-xl font-bold hover:bg-primary/5 transition-colors">عرض التفاصيل التقنية</button>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -top-20 -right-20 w-80 h-80 bg-secondary-container/20 rounded-full blur-3xl"></div>
+<div class="glass-card rounded-2xl overflow-hidden shadow-2xl relative border-outline-variant/30">
+<img alt="HR Dashboard Preview" class="w-full h-auto" data-alt="A clean, minimalist high-fidelity user interface of a modern HRMS software dashboard displayed on a high-resolution professional monitor. The UI features sleek charts in shades of tech cyan and deep blue, showing employee analytics and payroll trends. The background is a bright, airy corporate office environment with soft natural lighting and a shallow depth of field, emphasizing a sophisticated digital transformation aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB7NJjCUAXGrcawVR0SXXyQU_fKVKCr9bRF9q-hae_0ePpCSeSeMcWQjKAsdjAFQlYQiU9cSqD2lZF40iyQX7hxTPGTId5OzG7JXVDY8OO0-6XaodTHUwXOfbMdsdMWuxIVVNf_Wyc4W1Adzv1IRKtu4SYcbN8Ug9xdxbnHS3srZx6YkMoufDPqXj2kYRHTIcfb3JMxLwU51EEIAfKqIkdceNpEQvULNoll-ctISisFWPv1wsXPn7XU32fpTV7aYEmnn4LKceBuaU"/>
+</div>
+<!-- Floating Stat Cards -->
+<div class="absolute -bottom-6 -left-6 glass-card p-6 rounded-xl shadow-xl flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-weight="fill">analytics</span>
+</div>
+<div>
+<div class="text-sm text-on-surface-variant">كفاءة الأداء</div>
+<div class="text-xl font-bold text-primary">+35%</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Features Section -->
+<section class="py-section-gap bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">مميزات صُممت لتمكين منظمتك</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">نظامنا يغطي كافة جوانب دورة حياة الموظف من التوظيف حتى التقاعد، مع واجهات ذكية وسهلة الاستخدام.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Payroll Section -->
+<div class="md:col-span-8 glass-card p-10 rounded-2xl flex flex-col md:flex-row gap-8 hover:shadow-xl transition-shadow group border-outline-variant/20 bg-white">
+<div class="flex-1">
+<div class="w-14 h-14 bg-primary rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">payments</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4">نظام الرواتب والأجور (Payroll)</h3>
+<p class="font-body-md text-on-surface-variant mb-6">أتمتة كاملة لعمليات احتساب الرواتب مع مراعاة البدلات، الخصومات، والضرائب المحلية بكل دقة وسهولة.</p>
+<ul class="space-y-3 font-label-md text-on-surface">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary">check_circle</span> الربط مع نظام حماية الأجور (WPS)</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary">check_circle</span> تقارير مالية مفصلة</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary">check_circle</span> معالجة الدفعات الجماعية</li>
+</ul>
+</div>
+<div class="flex-1 rounded-xl overflow-hidden border border-outline-variant/10">
+<img alt="Payroll Analytics" class="w-full h-full object-cover" data-alt="A macro shot of a sleek tablet displaying a sophisticated payroll management interface. The screen shows vibrant bar graphs and numerical data representing salary distributions and tax compliance metrics. The lighting is soft and professional, highlighting the high-end materials of the device and the clean blue-themed UI. The overall mood is focused on financial precision and technological excellence in a modern corporate setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIDrR3WsC9M0kNMg1PfusJyj350U1dCXMTryWS8AJBlW5wTekuH05CcIIESCajXvGYNG4tXN4pR22DXQAgRFS2itUXnwGwzQftkbh-Vb314o53K57f1rd1pHTaoFUPuyIt-DcJxF3aWiBOTpcwJ2fXJoX8X8cZlp8QVpv_sy6ACE5l9HUZ_AFj5G3kTqWjTk3rd6az1z284Gco3HVbJTiAUHEWoce9CYU-r-hF6QZ31KeqJ_S924RA1G7m8c8N2LeDYQVWicUoI8g"/>
+</div>
+</div>
+<!-- Attendance Tracking -->
+<div class="md:col-span-4 bg-primary p-10 rounded-2xl text-on-primary flex flex-col justify-between hover:shadow-2xl transition-shadow relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary opacity-10 rounded-full -mr-16 -mt-16"></div>
+<div>
+<div class="w-14 h-14 bg-secondary-container/20 rounded-xl flex items-center justify-center text-secondary-container mb-6">
+<span class="material-symbols-outlined text-3xl">schedule</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4">تتبع الحضور والانصراف</h3>
+<p class="font-body-md opacity-80">إدارة مرنة لمواعيد العمل، الإجازات، والغياب عبر أنظمة تتبع ذكية تدعم التوقيع الجغرافي والبيومتري.</p>
+</div>
+<div class="mt-10 flex justify-end">
+<span class="material-symbols-outlined text-6xl opacity-20">fingerprint</span>
+</div>
+</div>
+<!-- Performance Analytics -->
+<div class="md:col-span-5 glass-card p-10 rounded-2xl hover:shadow-xl transition-shadow bg-white border-outline-variant/20">
+<div class="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-6">
+<span class="material-symbols-outlined text-3xl" data-weight="fill">query_stats</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4">تحليلات الأداء (Analytics)</h3>
+<p class="font-body-md text-on-surface-variant mb-6">اتخذ قرارات مدروسة بناءً على بيانات دقيقة حول إنتاجية الموظفين ومعدلات الدوران الوظيفي.</p>
+<div class="h-40 w-full bg-surface-container rounded-lg flex items-end justify-between p-4 gap-2">
+<div class="w-full bg-primary h-1/2 rounded-t-sm"></div>
+<div class="w-full bg-secondary h-3/4 rounded-t-sm"></div>
+<div class="w-full bg-primary h-2/3 rounded-t-sm"></div>
+<div class="w-full bg-secondary h-full rounded-t-sm"></div>
+<div class="w-full bg-primary h-4/5 rounded-t-sm"></div>
+</div>
+</div>
+<!-- Employee Self-Service -->
+<div class="md:col-span-7 glass-card p-10 rounded-2xl flex items-center gap-8 hover:shadow-xl transition-shadow bg-white border-outline-variant/20">
+<div class="flex-1">
+<h3 class="font-headline-sm text-headline-sm mb-4">الخدمة الذاتية للموظفين</h3>
+<p class="font-body-md text-on-surface-variant mb-4">منصة موحدة تتيح للموظفين تحديث بياناتهم، طلب الإجازات، والاطلاع على كشوف الرواتب دون الرجوع لإدارة الموارد البشرية.</p>
+<div class="flex gap-4">
+<span class="px-3 py-1 bg-surface-variant text-on-surface-variant rounded-md text-xs font-bold">تطبيق جوال</span>
+<span class="px-3 py-1 bg-surface-variant text-on-surface-variant rounded-md text-xs font-bold">بوابة ويب</span>
+</div>
+</div>
+<div class="w-48 hidden sm:block">
+<div class="aspect-[9/16] bg-inverse-surface rounded-3xl p-2 shadow-inner border-4 border-surface-variant">
+<div class="w-full h-full bg-surface rounded-2xl overflow-hidden">
+<div class="h-8 bg-primary w-full"></div>
+<div class="p-3 space-y-2">
+<div class="h-2 w-3/4 bg-outline-variant rounded"></div>
+<div class="h-10 w-full bg-surface-container rounded"></div>
+<div class="h-10 w-full bg-surface-container rounded"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- MENA Compliance Section -->
+<section class="py-section-gap relative overflow-hidden bg-primary">
+<div class="absolute inset-0 opacity-10">
+<div class="absolute top-0 left-0 w-full h-full" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 40px 40px;"></div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-primary mb-8">التوافق مع قوانين العمل في الشرق الأوسط (MENA)</h2>
+<div class="space-y-8">
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">gavel</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-on-primary mb-2">امتثال قانوني كامل</h4>
+<p class="font-body-md text-primary-fixed-dim">تحديثات تلقائية تتماشى مع تغييرات أنظمة العمل في السعودية (نظام العمل)، الإمارات، مصر، وبقية دول المنطقة.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-on-primary mb-2">إدارة التأمينات والضرائب</h4>
+<p class="font-body-md text-primary-fixed-dim">تكامل مباشر مع المؤسسة العامة للتأمينات الاجتماعية (GOSI) وهيئات الزكاة والضريبة المحلية.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">flag</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-on-primary mb-2">دعم ثنائي اللغة</h4>
+<p class="font-body-md text-primary-fixed-dim">واجهات وتقارير تدعم اللغتين العربية والإنجليزية بتبديل فوري لتلبية احتياجات كافة الموظفين والمدراء.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-secondary/20 blur-2xl group-hover:bg-secondary/30 transition-colors"></div>
+<img alt="Legal Compliance" class="rounded-2xl shadow-2xl relative border border-primary-container" data-alt="A high-angle professional photograph of a diverse team of HR professionals in a modern, sun-drenched office in Riyadh. They are collaborating over a large digital surface displaying complex legal compliance documents and workflow diagrams. The setting is clean and high-end, featuring sleek wooden accents and minimalist furniture. The lighting is warm yet crisp, creating a mood of stability, trust, and professional excellence in the Middle Eastern business landscape." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCEQHS6M_Gm8KCvAm690HF3ZSo3RqgazOkkR7RrhFvDQM-p1JrFfllHOfiSzVF9k-lGNeflKj8TUG6V06LsfA_ljcm05ENOWidy9SdfzHpHyOHSdmXCv4YTiJxxiM1f-IpqiSQm7YC0HTF9n7ELtrT1O7yr6DCahX6iIWynXZbKm8v4qv9ULuj_-R6zFr8IOEXyJctRc2O7hmSl5yI_8pxMuVA1TjS_IDfsSql5cYEI0eAoD8YZvG5CMZ4sWZK88D9-jqIbpj0aA8"/>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-md p-8 rounded-full border border-white/20">
+<span class="material-symbols-outlined text-white text-6xl">security</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-section-gap">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="bg-surface-container rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="font-display-lg text-display-lg text-primary mb-6">جاهز لرقمنة مواردك البشرية؟</h2>
+<p class="font-body-lg text-on-surface-variant mb-10 max-w-2xl mx-auto">انضم إلى مئات الشركات الرائدة في المنطقة التي اختارت TechNexus لإدارة رأس مالها البشري.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-secondary text-on-secondary px-10 py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all active:scale-95">احجز عرضاً تجريبياً حياً</button>
+<button class="bg-white text-primary border-2 border-primary px-10 py-4 rounded-xl font-bold text-lg hover:bg-primary/5 transition-all">تواصل مع مستشار تقني</button>
+</div>
+</div>
+<!-- Abstract Background Decor -->
+<div class="absolute bottom-0 right-0 w-64 h-64 bg-secondary-container/30 rounded-full blur-3xl -mb-32 -mr-32"></div>
+<div class="absolute top-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mt-32 -ml-32"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary font-body-md text-body-md full-width border-t border-primary-container">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-section-gap max-w-container-max mx-auto">
+<div class="md:col-span-1">
+<div class="font-headline-md text-headline-md font-black text-secondary-container mb-6">TechNexus</div>
+<p class="opacity-70 leading-relaxed mb-6">حلول تقنية متكاملة لإدارة الموارد البشرية والدعم الفني متخصصة في منطقة الشرق الأوسط وشمال أفريقيا.</p>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-secondary-container">المكاتب الإقليمية</h5>
+<ul class="space-y-4 opacity-80">
+<li class="hover:text-secondary-fixed transition-colors cursor-pointer">مكتب الرياض</li>
+<li class="hover:text-secondary-fixed transition-colors cursor-pointer">مكتب دبي</li>
+<li class="hover:text-secondary-fixed transition-colors cursor-pointer">مكتب القاهرة</li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-secondary-container">روابط سريعة</h5>
+<ul class="space-y-4 opacity-80">
+<li class="hover:text-secondary-fixed transition-colors cursor-pointer">سياسة الخصوصية</li>
+<li class="hover:text-secondary-fixed transition-colors cursor-pointer">شروط الخدمة</li>
+<li class="hover:text-secondary-fixed transition-colors cursor-pointer">تواصل مع الدعم</li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6 text-secondary-container">النشرة البريدية</h5>
+<p class="opacity-70 mb-4 text-sm">اشترك للحصول على آخر التحديثات في قوانين العمل والتقنية.</p>
+<div class="flex gap-2">
+<input class="bg-white/10 border border-white/20 rounded-lg px-4 py-2 w-full focus:ring-2 ring-secondary-container outline-none text-white" placeholder="البريد الإلكتروني" type="email"/>
+<button class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-lg hover:opacity-90">إرسال</button>
+</div>
+</div>
+</div>
+<div class="border-t border-white/10 py-8 px-margin-desktop max-w-container-max mx-auto text-center opacity-60 text-sm">
+            © 2024 TechNexus Solutions. All rights reserved. Specialized HRMS &amp; Technical Support Systems for the MENA Region.
+        </div>
+</footer>
+<script>
+        // Micro-interaction for hover effects on cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Simple smooth scroll reveal effect
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
+    </script>
+</body></html>
