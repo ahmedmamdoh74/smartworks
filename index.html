@@ -1,665 +1,306 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Smart Works Solutions — حلول تقنية ذكية للموارد البشرية</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --primary:#4361ee;--primary-h:#3451d1;--primary-lt:#eef1fd;
-  --success:#06b17a;--success-lt:#e6f9f3;
-  --warning:#f4a261;--warning-lt:#fff3e8;
-  --danger:#ef233c;--danger-lt:#fde8ec;
-  --gemini:#8b5cf6;--gemini-lt:#f3f0ff;
-  --bg:#f4f6fb;--surface:#fff;--surface2:#f8faff;
-  --border:#eaecf4;--text:#1a1d2e;--text2:#5a607a;--text3:#adb5bd;
-  --r:12px;--r-sm:8px;--r-lg:18px;
-  --sh:0 4px 24px rgba(67,97,238,.10);
-  --sh-lg:0 8px 40px rgba(67,97,238,.14);
-}
-html{scroll-behavior:smooth}
-body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--text);direction:rtl;overflow-x:hidden}
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Smart Works Solutions – حلول تقنية ذكية للموارد البشرية</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --primary:#4361ee; --primary-h:#3451d1; --primary-lt:#eef1fd;
+            --success:#06b17a; --success-lt:#e6f9f3;
+            --warning:#f4a261; --warning-lt:#fff3e8;
+            --danger:#ef233c; --danger-lt:#fde8ec;
+            --bg:#f4f6fb; --surface:#fff; --surface2:#f8faff;
+            --border:#eaeacf; --text:#1a1d2e; --text2:#5a607a; --text3:#adb5bd;
+        }
+        html{scroll-behavior:smooth}
+        body{
+            font-family:'Tajawal', sans-serif;
+            background:var(--bg);
+            color:var(--text);
+            direction:rtl;
+            overflow-x:hidden;
+        }
+        
+        /* Navigation Style */
+        nav{
+            position:fixed; top:0; left:0; right:0; z-index:999; height:68px;
+            background:rgba(255,255,255,.96); backdrop-filter:blur(20px);
+            border-bottom:1px solid #e2e8f0; display:flex; align-items:center;
+            justify-content:space-between; padding:0 40px;
+            box-shadow:0 2px 12px rgba(67,97,238,.03); transition:all .3s
+        }
+        .nav-logo{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:20px; color:var(--primary) }
+        .nav-logo-box{ width:36px; height:36px; background:linear-gradient(135deg,var(--primary),#7b2cbf); border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900 }
+        .nav-links{ display:flex; align-items:center; gap:32px; list-style:none }
+        .nav-links a{ text-decoration:none; color:var(--text2); font-weight:500; font-size:15px; transition:color .2s }
+        .nav-links a:hover, .nav-links a.active{ color:var(--primary); font-weight:700 }
+        .nav-btn{ background:var(--primary); color:#fff; padding:10px 20px; border-radius:10px; font-weight:600; font-size:14px; cursor:pointer; transition:all .2s; border:none }
+        .nav-btn:hover{ background:var(--primary-h); transform:translateY(-1px); box-shadow:0 4px 12px rgba(67,97,238,.2) }
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:999;height:68px;
-  background:rgba(255,255,255,.96);backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);display:flex;align-items:center;
-  justify-content:space-between;padding:0 40px;
-  box-shadow:0 2px 12px rgba(67,97,238,.07);transition:box-shadow .3s}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-mark{width:36px;height:36px;background:linear-gradient(135deg,var(--primary),#7b5ea7);
-  border-radius:8px;display:flex;align-items:center;justify-content:center;
-  color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;flex-shrink:0}
-.nav-brand .en{font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;
-  color:var(--primary);letter-spacing:.5px;display:block;line-height:1.2}
-.nav-brand .ar{font-size:10px;color:var(--text3);display:block}
-.nav-links{display:flex;gap:2px;list-style:none}
-.nav-links a{font-size:13px;color:var(--text2);text-decoration:none;
-  padding:7px 13px;border-radius:var(--r-sm);transition:.2s;font-weight:500}
-.nav-links a:hover,.nav-links a.active{color:var(--primary);background:var(--primary-lt)}
-.nav-app-btn{display:inline-flex;align-items:center;gap:7px;
-  background:linear-gradient(135deg,var(--primary),#7b5ea7);color:#fff;
-  border:none;padding:9px 20px;border-radius:var(--r-sm);
-  font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;
-  cursor:pointer;text-decoration:none;transition:.2s}
-.nav-app-btn:hover{opacity:.9;transform:translateY(-1px)}
-
-/* HERO */
-#home{padding-top:68px;min-height:100vh;
-  background:linear-gradient(160deg,#eef2ff 0%,var(--surface2) 50%,var(--bg) 100%);
-  position:relative;overflow:hidden;display:flex;align-items:center}
-.hero-blob{position:absolute;border-radius:50%;pointer-events:none}
-.b1{width:500px;height:500px;top:-150px;left:-150px;
-  background:radial-gradient(ellipse,rgba(67,97,238,.08),transparent 70%)}
-.b2{width:350px;height:350px;bottom:0;right:-80px;
-  background:radial-gradient(ellipse,rgba(6,177,122,.07),transparent 70%)}
-.hero-inner{max-width:1200px;margin:0 auto;padding:80px 40px 60px;
-  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--primary-lt);
-  border:1px solid rgba(67,97,238,.2);border-radius:20px;padding:6px 16px;
-  font-size:12px;color:var(--primary);font-weight:600;margin-bottom:24px}
-.hbd{width:6px;height:6px;background:var(--primary);border-radius:50%;animation:blink 2s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.hero-left h1{font-size:clamp(28px,3.5vw,50px);font-weight:900;line-height:1.12;margin-bottom:18px}
-.hero-left h1 .brand{font-family:'Montserrat',sans-serif;font-weight:800;
-  background:linear-gradient(135deg,var(--primary),#7b5ea7);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  display:block;font-size:clamp(24px,3vw,42px);letter-spacing:-1px;margin-bottom:6px}
-.hero-left p{font-size:16px;color:var(--text2);line-height:1.85;margin-bottom:34px;font-weight:300}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:38px}
-.btn-p{background:linear-gradient(135deg,var(--primary),#7b5ea7);color:#fff;border:none;
-  padding:13px 30px;border-radius:var(--r-sm);font-family:'Tajawal',sans-serif;
-  font-size:15px;font-weight:700;cursor:pointer;transition:.25s;
-  box-shadow:0 6px 24px rgba(67,97,238,.22);text-decoration:none;
-  display:inline-flex;align-items:center;gap:8px}
-.btn-p:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(67,97,238,.32)}
-.btn-o{background:transparent;color:var(--primary);border:1.5px solid rgba(67,97,238,.3);
-  padding:13px 30px;border-radius:var(--r-sm);font-family:'Tajawal',sans-serif;
-  font-size:15px;font-weight:600;cursor:pointer;transition:.2s;
-  display:inline-flex;align-items:center;gap:8px}
-.btn-o:hover{background:var(--primary-lt);border-color:var(--primary)}
-.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.hs{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
-  padding:14px 10px;text-align:center;box-shadow:var(--sh)}
-.hs .n{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:800;
-  color:var(--primary);display:block;line-height:1}
-.hs .l{font-size:11px;color:var(--text2);margin-top:4px}
-.hero-right{position:relative}
-.hero-img-wrap{border-radius:14px;overflow:hidden;
-  box-shadow:0 20px 70px rgba(67,97,238,.18);border:2px solid rgba(67,97,238,.1)}
-.hero-img-wrap img{width:100%;display:block}
-.hero-float{position:absolute;bottom:18px;right:18px;
-  background:rgba(255,255,255,.96);backdrop-filter:blur(12px);
-  border-radius:12px;padding:11px 16px;display:flex;align-items:center;gap:10px;
-  box-shadow:0 4px 20px rgba(0,0,0,.1);border:1px solid var(--border)}
-.hf-dot{width:10px;height:10px;background:var(--success);border-radius:50%}
-.hf-t{font-size:12px;font-weight:700;color:var(--text)}
-.hf-s{font-size:10px;color:var(--text2)}
-
-/* STATS BAR */
-.stats-bar{background:linear-gradient(135deg,var(--primary),#7b5ea7);padding:42px 40px}
-.sb-inner{max-width:1100px;margin:0 auto;
-  display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.sbi{text-align:center;padding:8px}
-.sbi .n{font-family:'Montserrat',sans-serif;font-size:36px;font-weight:800;
-  color:#fff;display:block;line-height:1}
-.sbi .l{font-size:13px;color:rgba(255,255,255,.72);margin-top:5px}
-
-/* SECTIONS */
-section{padding:88px 40px}
-.si{max-width:1100px;margin:0 auto}
-.sh{margin-bottom:50px}
-.sh.c{text-align:center}
-.sec-badge{display:inline-flex;align-items:center;gap:7px;background:var(--primary-lt);
-  color:var(--primary);border-radius:20px;padding:5px 15px;
-  font-size:11px;font-weight:700;letter-spacing:.5px;margin-bottom:13px}
-.sec-title{font-size:clamp(24px,2.8vw,38px);font-weight:900;line-height:1.2;
-  max-width:580px;color:var(--text)}
-.sec-title span{background:linear-gradient(135deg,var(--primary),var(--success));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.sec-sub{font-size:15px;color:var(--text2);max-width:520px;
-  line-height:1.85;margin-top:10px;font-weight:300}
-
-/* SOLUTIONS */
-#solutions{background:var(--surface)}
-.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.sc{background:var(--surface2);border:1.5px solid var(--border);border-radius:16px;
-  padding:30px 22px;transition:.25s;position:relative;overflow:hidden;cursor:pointer}
-.sc::before{content:'';position:absolute;top:0;right:0;left:0;height:3px;
-  background:linear-gradient(90deg,var(--primary),var(--success));opacity:0;transition:.25s}
-.sc:hover{border-color:rgba(67,97,238,.22);transform:translateY(-3px);
-  box-shadow:var(--sh-lg);background:var(--surface)}
-.sc:hover::before{opacity:1}
-.si-ico{width:48px;height:48px;border-radius:11px;display:flex;align-items:center;
-  justify-content:center;margin-bottom:18px;font-size:19px}
-.ib{background:var(--primary-lt);color:var(--primary)}
-.ig{background:var(--success-lt);color:var(--success)}
-.ip{background:var(--gemini-lt);color:var(--gemini)}
-.io{background:var(--warning-lt);color:var(--warning)}
-.sc h3{font-size:16px;font-weight:700;color:var(--text);margin-bottom:9px}
-.sc p{font-size:13px;color:var(--text2);line-height:1.8;font-weight:300}
-.stag{margin-top:16px;display:inline-block;font-size:10px;color:var(--primary);
-  border:1px solid rgba(67,97,238,.2);border-radius:4px;padding:3px 10px;
-  font-weight:700;letter-spacing:.5px}
-
-/* FEATURES */
-#features{background:var(--bg)}
-.fl{display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center}
-.fvis{background:var(--surface);border:1px solid var(--border);
-  border-radius:18px;padding:26px;box-shadow:var(--sh-lg)}
-.fvh{display:flex;align-items:center;gap:6px;margin-bottom:20px;
-  padding-bottom:13px;border-bottom:1px solid var(--border)}
-.fvd{width:10px;height:10px;border-radius:50%}
-.fvl{font-size:11px;color:var(--text2);font-family:'Montserrat',sans-serif;
-  font-weight:600;letter-spacing:.5px;margin-right:4px}
-.mkpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
-.mk{padding:11px 7px;border-radius:var(--r-sm);text-align:center}
-.mk .n{font-size:20px;font-weight:800;font-family:'Montserrat',sans-serif;display:block;line-height:1}
-.mk .l{font-size:10px;margin-top:3px}
-.mkg{background:var(--success-lt)} .mkg .n{color:var(--success)} .mkg .l{color:#089a6a}
-.mkw{background:var(--warning-lt)} .mkw .n{color:var(--warning)} .mkw .l{color:#c4783d}
-.mkd{background:var(--danger-lt)}  .mkd .n{color:var(--danger)}  .mkd .l{color:#c41a30}
-.er{display:flex;align-items:center;justify-content:space-between;
-  padding:9px 13px;background:var(--surface2);border-radius:var(--r-sm);
-  margin-bottom:7px;border:1px solid var(--border);transition:.15s}
-.er:hover{border-color:rgba(67,97,238,.18);background:#f0f4ff}
-.er:last-child{margin-bottom:0}
-.eri{display:flex;align-items:center;gap:9px}
-.erav{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;
-  justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
-.ern{font-size:13px;font-weight:700;color:var(--text)}
-.erid{font-size:10px;color:var(--text3)}
-.erx{display:flex;align-items:center;gap:7px}
-.ert{font-size:11px;color:var(--text2);font-family:'Montserrat',sans-serif}
-.badge{font-size:10px;padding:3px 11px;border-radius:20px;font-weight:700}
-.bp{background:var(--success-lt);color:var(--success)}
-.bl{background:var(--warning-lt);color:var(--warning)}
-.bv{background:var(--primary-lt);color:var(--primary)}
-.ba{background:var(--danger-lt);color:var(--danger)}
-.fitems{display:flex;flex-direction:column;gap:20px}
-.fi{display:flex;gap:16px;align-items:flex-start}
-.fico{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;
-  justify-content:center;font-size:17px;flex-shrink:0}
-.fit h4{font-size:15px;font-weight:700;color:var(--text);margin-bottom:5px}
-.fit p{font-size:13px;color:var(--text2);line-height:1.8;font-weight:300}
-
-/* PROCESS */
-#process{background:var(--surface)}
-.pg{display:grid;grid-template-columns:repeat(4,1fr);gap:0;
-  position:relative;margin-top:50px}
-.pg::before{content:'';position:absolute;top:36px;right:12%;left:12%;
-  height:2px;background:linear-gradient(90deg,var(--primary),var(--success));opacity:.12}
-.ps{text-align:center;padding:0 14px}
-.psc{width:72px;height:72px;border-radius:50%;
-  background:linear-gradient(135deg,var(--primary),#7b5ea7);
-  display:flex;align-items:center;justify-content:center;margin:0 auto 20px;
-  font-family:'Montserrat',sans-serif;font-size:21px;font-weight:800;color:#fff;
-  box-shadow:0 7px 22px rgba(67,97,238,.2);position:relative;z-index:1}
-.ps h4{font-size:15px;font-weight:700;color:var(--text);margin-bottom:7px}
-.ps p{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300}
-
-/* PRICING */
-#pricing{background:var(--bg)}
-.plg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px}
-.plc{background:var(--surface);border:1.5px solid var(--border);
-  border-radius:20px;padding:34px 26px;transition:.25s;position:relative;overflow:hidden}
-.plc.feat{border-color:var(--primary);box-shadow:0 8px 40px rgba(67,97,238,.12)}
-.plc.feat::before{content:'';position:absolute;top:0;right:0;left:0;height:4px;
-  background:linear-gradient(90deg,var(--primary),#7b5ea7)}
-.pl-pop{display:inline-block;background:linear-gradient(135deg,var(--primary),#7b5ea7);
-  color:#fff;font-size:11px;font-weight:700;padding:4px 14px;
-  border-radius:20px;margin-bottom:14px}
-.pl-name{font-size:12px;font-weight:700;color:var(--text2);
-  text-transform:uppercase;letter-spacing:1px;margin-bottom:9px}
-.pl-users{display:inline-flex;align-items:center;gap:6px;
-  background:var(--surface2);border:1px solid var(--border);
-  border-radius:20px;padding:4px 13px;font-size:12px;
-  color:var(--text2);font-weight:600;margin-bottom:16px}
-.pl-price{display:flex;align-items:baseline;gap:5px;margin-bottom:9px}
-.pl-price .a{font-family:'Montserrat',sans-serif;font-size:42px;
-  font-weight:800;color:var(--text);line-height:1}
-.pl-price .c{font-size:14px;font-weight:600;color:var(--text2)}
-.pl-price .p{font-size:13px;color:var(--text3)}
-.pl-desc{font-size:13px;color:var(--text2);margin-bottom:22px;
-  line-height:1.75;font-weight:300;min-height:52px}
-.pl-div{height:1px;background:var(--border);margin-bottom:20px}
-.pl-feats{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
-.pl-feats li{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--text2)}
-.pl-feats li.off{color:var(--text3)}
-.ck{color:var(--success);font-size:12px;flex-shrink:0;margin-top:2px}
-.xx{color:var(--text3);font-size:12px;flex-shrink:0;margin-top:2px}
-.pl-btn{width:100%;padding:12px;border-radius:var(--r-sm);
-  font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;
-  cursor:pointer;transition:.22s;border:none}
-.pl-btn.pp{background:linear-gradient(135deg,var(--primary),#7b5ea7);color:#fff;
-  box-shadow:0 4px 14px rgba(67,97,238,.2)}
-.pl-btn.pp:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(67,97,238,.3)}
-.pl-btn.po{background:transparent;border:1.5px solid var(--border);color:var(--text2)}
-.pl-btn.po:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-lt)}
-
-/* TESTIMONIALS */
-#clients{background:var(--surface)}
-.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px}
-.tc{background:var(--surface2);border:1px solid var(--border);
-  border-radius:16px;padding:26px;transition:.2s}
-.tc:hover{box-shadow:var(--sh);transform:translateY(-2px);background:var(--surface)}
-.tc-stars{color:var(--warning);font-size:13px;margin-bottom:13px;letter-spacing:2px}
-.tc-body{font-size:14px;color:var(--text2);line-height:1.85;
-  font-style:italic;margin-bottom:20px;font-weight:300;position:relative;padding-right:14px}
-.tc-body::before{content:'"';position:absolute;right:0;top:-4px;
-  font-size:28px;color:var(--primary);opacity:.18;line-height:1}
-.tc-auth{display:flex;align-items:center;gap:11px}
-.tav{width:40px;height:40px;border-radius:50%;
-  background:linear-gradient(135deg,var(--primary),#7b5ea7);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;color:#fff}
-.tn{font-size:14px;font-weight:700;color:var(--text)}
-.tr{font-size:11px;color:var(--text3)}
-.logos{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:44px}
-.lc{background:var(--surface2);border:1px solid var(--border);
-  border-radius:9px;padding:12px 24px;font-size:13px;font-weight:700;
-  color:var(--text2);display:flex;align-items:center;gap:7px;transition:.2s}
-.lc:hover{border-color:rgba(67,97,238,.28);color:var(--primary)}
-
-/* CTA */
-#cta{background:linear-gradient(135deg,var(--primary) 0%,#7b5ea7 100%);
-  padding:88px 40px;text-align:center}
-#cta h2{font-size:clamp(24px,3.2vw,42px);font-weight:900;color:#fff;margin-bottom:12px}
-#cta p{font-size:16px;color:rgba(255,255,255,.78);margin-bottom:38px;font-weight:300}
-.cta-btns{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
-.bw{background:#fff;color:var(--primary);border:none;padding:14px 34px;
-  border-radius:var(--r-sm);font-family:'Tajawal',sans-serif;
-  font-size:15px;font-weight:700;cursor:pointer;transition:.2s;
-  display:inline-flex;align-items:center;gap:8px}
-.bw:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.15)}
-.bgw{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4);
-  padding:14px 34px;border-radius:var(--r-sm);font-family:'Tajawal',sans-serif;
-  font-size:15px;font-weight:600;cursor:pointer;transition:.2s;
-  display:inline-flex;align-items:center;gap:8px}
-.bgw:hover{background:rgba(255,255,255,.1);border-color:#fff}
-#cta .note{font-size:12px;color:rgba(255,255,255,.45);margin-top:18px}
-
-/* FOOTER */
-footer{background:var(--text);color:#fff;padding:54px 40px 30px}
-.fi2{max-width:1100px;margin:0 auto}
-.ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:38px;margin-bottom:42px}
-.fb-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.fb-desc{font-size:13px;color:rgba(255,255,255,.47);
-  line-height:1.85;font-weight:300;max-width:255px;margin-bottom:18px}
-.fab{display:inline-flex;align-items:center;gap:7px;
-  background:linear-gradient(135deg,var(--primary),#7b5ea7);
-  color:#fff;border:none;padding:9px 20px;border-radius:var(--r-sm);
-  font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;
-  text-decoration:none;transition:.2s}
-.fab:hover{opacity:.88}
-.fc{} 
-.fc h5{font-size:11px;font-weight:700;color:rgba(255,255,255,.82);
-  margin-bottom:15px;letter-spacing:.8px;text-transform:uppercase}
-.fc ul{list-style:none;display:flex;flex-direction:column;gap:9px}
-.fc ul li a{font-size:13px;color:rgba(255,255,255,.42);
-  text-decoration:none;transition:.2s;display:flex;align-items:center;gap:6px}
-.fc ul li a:hover{color:rgba(255,255,255,.88)}
-.fdiv{height:1px;background:rgba(255,255,255,.07);margin-bottom:22px}
-.fb{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
-.fcopy{font-size:12px;color:rgba(255,255,255,.32)}
-.sr{display:flex;gap:8px}
-.sl{width:35px;height:35px;border-radius:8px;border:1px solid rgba(255,255,255,.1);
-  display:flex;align-items:center;justify-content:center;
-  color:rgba(255,255,255,.42);font-size:14px;transition:.2s;text-decoration:none}
-.sl:hover{border-color:rgba(255,255,255,.32);color:#fff;background:rgba(255,255,255,.07)}
-
-/* RESPONSIVE */
-@media(max-width:1024px){
-  .hero-inner,.fl{grid-template-columns:1fr}
-  .hero-right{display:none}
-  .sg,.plg,.tg{grid-template-columns:1fr 1fr}
-  .pg{grid-template-columns:1fr 1fr;gap:38px}
-  .pg::before{display:none}
-  .ft{grid-template-columns:1fr 1fr}
-  nav{padding:0 22px}
-  .nav-links li:nth-child(n+5){display:none}
-  section{padding:68px 22px}
-}
-@media(max-width:640px){
-  .sg,.plg,.tg,.sb-inner{grid-template-columns:1fr}
-  .hero-stats{grid-template-columns:repeat(3,1fr)}
-  .ft{grid-template-columns:1fr}
-  .nav-links{display:none}
-  .pg{grid-template-columns:1fr}
-}
-</style>
+        @media (max-w: 768px) {
+            nav { padding: 0 20px; }
+            .nav-links { display: none; }
+        }
+    </style>
+    
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4361ee',
+                        'primary-h': '#3451d1',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
+<body class="bg-slate-50 pt-[68px]">
 
-<!-- NAV -->
-<nav>
-  <a href="#home" class="nav-logo">
-    <div class="nav-mark">SW</div>
-    <div class="nav-brand">
-      <span class="en">Smart Works Solutions</span>
-      <span class="ar">حلول تقنية ذكية للموارد البشرية</span>
-    </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#home"      class="na">الرئيسية</a></li>
-    <li><a href="#solutions" class="na">حلولنا</a></li>
-    <li><a href="#features"  class="na">المميزات</a></li>
-    <li><a href="#process"   class="na">كيف نعمل</a></li>
-    <li><a href="#pricing"   class="na">الأسعار</a></li>
-    <li><a href="#clients"   class="na">عملاؤنا</a></li>
-  </ul>
-  <a href="https://script.google.com/macros/s/YOUR_APP_ID/exec" target="_blank" class="nav-app-btn">
-    <i class="fa-solid fa-fingerprint"></i> دخول التطبيق
-  </a>
-</nav>
-
-<!-- HERO -->
-<section id="home">
-  <div class="hero-blob b1"></div>
-  <div class="hero-blob b2"></div>
-  <div class="hero-inner">
-    <div class="hero-left">
-      <div class="hero-badge"><div class="hbd"></div>الحل الأمثل لأتمتة الموارد البشرية في السوق العربي</div>
-      <h1>
-        <span class="brand">Smart Works Solutions</span>
-        حلول تقنية ذكية لإدارة الموارد البشرية
-      </h1>
-      <p>نمكّن الشركات العربية من أتمتة عمليات الموارد البشرية بالكامل — من الحضور والانصراف إلى الرواتب والأداء — بتقنية عالمية وتجربة عربية أصيلة.</p>
-      <div class="hero-actions">
-        <a href="#pricing" class="btn-p"><i class="fa-solid fa-rocket"></i> ابدأ مجاناً</a>
-        <button class="btn-o" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})"><i class="fa-solid fa-circle-play"></i> شاهد كيف يعمل</button>
-      </div>
-      <div class="hero-stats">
-        <div class="hs"><span class="n">+500</span><span class="l">شركة تثق بنا</span></div>
-        <div class="hs"><span class="n">15+</span><span class="l">دولة عربية</span></div>
-        <div class="hs"><span class="n">98%</span><span class="l">رضا العملاء</span></div>
-      </div>
-    </div>
-    <div class="hero-right">
-      <div class="hero-img-wrap">
-        <img src="hero-screenshot.png" alt="نظام الحضور والانصراف — Smart Works Solutions"/>
-        <div class="hero-float">
-          <div class="hf-dot"></div>
-          <div><div class="hf-t">النظام يعمل الآن</div><div class="hf-s">142 موظف حاضر اليوم</div></div>
+    <nav>
+        <div class="nav-logo">
+            <div class="nav-logo-box">SW</div>
+            <span>Smart Works</span>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+        <ul class="nav-links">
+            <li><a href="#hero" class="active">الرئيسية</a></li>
+            <li><a href="#solutions">حلولنا</a></li>
+            <li><a href="#features">المميزات</a></li>
+            <li><a href="#how-it-works">كيف نعمل</a></li>
+            <li><a href="#pricing">الأسعار</a></li>
+        </ul>
+        <button class="nav-btn"><i class="fa-solid fa-right-to-bracket ml-2"></i>دخول التطبيق</button>
+    </nav>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="sb-inner">
-    <div class="sbi"><span class="n">+500</span><div class="l">شركة تثق بنا</div></div>
-    <div class="sbi"><span class="n">15+</span><div class="l">دولة عربية</div></div>
-    <div class="sbi"><span class="n">98%</span><div class="l">رضا العملاء</div></div>
-    <div class="sbi"><span class="n">2M+</span><div class="l">بصمة تُعالَج يومياً</div></div>
-  </div>
-</div>
+    <section id="hero" class="relative pt-6 pb-12 md:pt-12 md:pb-20 overflow-hidden bg-gradient-to-b from-blue-50/40 to-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+                
+                <div class="w-full md:w-1/2 text-center md:text-right space-y-5">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs md:text-sm font-medium mx-auto md:mx-0">
+                        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                        الحل الأمثل لأتمتة الموارد البشرية في السوق العربي
+                    </div>
+                    
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 leading-tight">
+                        Smart Works Solutions <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                            حلول تقنية ذكية لإدارة الموارد البشرية
+                        </span>
+                    </h1>
+                    
+                    <p class="text-base text-slate-600 max-w-xl mx-auto md:mx-0 leading-relaxed">
+                        نمكّن الشركات العربية من أتمتة عمليات الموارد البشرية بالكامل – من الحضور والانصراف إلى الرواتب والأداء – بتقنية عالمية وتجربة عربية أصيلة.
+                    </p>
+                    
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
+                        <a href="#pricing" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-lg shadow-blue-600/20 transition-all duration-300 transform hover:-translate-y-0.5 text-sm md:text-base">
+                            ابدأ مجاناً 🚀
+                        </a>
+                        <a href="#how-it-works" class="px-6 py-3 rounded-xl bg-white border border-slate-200 hover:border-slate-300 text-slate-700 font-semibold transition-all duration-300 flex items-center gap-2 text-sm md:text-base">
+                            شاهد كيف يعمل
+                        </a>
+                    </div>
 
-<!-- SOLUTIONS -->
-<section id="solutions">
-  <div class="si">
-    <div class="sh">
-      <div class="sec-badge"><i class="fa-solid fa-layer-group"></i> حلولنا</div>
-      <h2 class="sec-title">منظومة متكاملة لـ <span>إدارة الموارد البشرية</span></h2>
-      <p class="sec-sub">كل ما تحتاجه في مكان واحد، مصمم خصيصاً للسوق العربي.</p>
-    </div>
-    <div class="sg">
-      <div class="sc"><div class="si-ico ib"><i class="fa-solid fa-fingerprint"></i></div><h3>نظام الحضور والانصراف</h3><p>تتبع دقيق للبصمات مع دعم أجهزة البصمة المختلفة ومعالجة ذكية للغيابات والإجازات وساعات العمل.</p><span class="stag">ATTENDANCE SYSTEM</span></div>
-      <div class="sc"><div class="si-ico ig"><i class="fa-solid fa-money-bill-wave"></i></div><h3>إدارة الرواتب والمكافآت</h3><p>حسابات تلقائية دقيقة للرواتب والخصومات والبدلات مع دعم كامل للوائح العمل العربية.</p><span class="stag">PAYROLL</span></div>
-      <div class="sc"><div class="si-ico ip"><i class="fa-solid fa-wand-magic-sparkles"></i></div><h3>تقارير وتحليلات AI</h3><p>مساعد ذكاء اصطناعي يتحدث العربية ويحلل بيانات الحضور ويقدم توصيات فورية لمديري الموارد البشرية.</p><span class="stag">AI ANALYTICS</span></div>
-      <div class="sc"><div class="si-ico ig"><i class="fa-solid fa-umbrella-beach"></i></div><h3>إدارة الإجازات والغياب</h3><p>نظام متكامل لطلبات الإجازات وتتبع الأرصدة مع تصنيف ذكي لكل أنواع الغياب.</p><span class="stag">LEAVE MANAGEMENT</span></div>
-      <div class="sc"><div class="si-ico io"><i class="fa-solid fa-bullseye"></i></div><h3>إدارة الأداء والتقييم</h3><p>تقييم الأداء وتحديد الأهداف ومتابعة الإنجازات بنظام مرن يتوافق مع ثقافة مؤسستك.</p><span class="stag">PERFORMANCE</span></div>
-      <div class="sc"><div class="si-ico ib"><i class="fa-solid fa-plug"></i></div><h3>تكامل وربط الأنظمة</h3><p>تكامل سلس مع Google Workspace وأنظمة ERP وأجهزة البصمة عبر API مفتوح.</p><span class="stag">INTEGRATION</span></div>
-    </div>
-  </div>
-</section>
+                    <div class="grid grid-cols-3 gap-2 pt-6 max-w-md mx-auto md:mx-0 border-t border-slate-100">
+                        <div class="text-center md:text-right">
+                            <h4 class="text-lg md:text-2xl font-bold text-blue-600">+500</h4>
+                            <p class="text-xs text-slate-500">شركة تثق بنا</p>
+                        </div>
+                        <div class="text-center md:text-right">
+                            <h4 class="text-lg md:text-2xl font-bold text-blue-600">+15</h4>
+                            <p class="text-xs text-slate-500">دولة عربية</p>
+                        </div>
+                        <div class="text-center md:text-right">
+                            <h4 class="text-lg md:text-2xl font-bold text-blue-600">98%</h4>
+                            <p class="text-xs text-slate-500">رضا العملاء</p>
+                        </div>
+                    </div>
+                </div>
 
-<!-- FEATURES -->
-<section id="features">
-  <div class="si">
-    <div class="fl">
-      <div class="fvis">
-        <div class="fvh">
-          <div class="fvd" style="background:#ef4444"></div>
-          <div class="fvd" style="background:#f59e0b;margin-right:5px"></div>
-          <div class="fvd" style="background:#22c55e;margin-right:5px"></div>
-          <span class="fvl">لوحة الحضور — اليوم</span>
+                <div class="w-full md:w-1/2 flex justify-center mt-6 md:mt-0">
+                    <div class="relative w-full max-w-md md:max-w-none">
+                        <div class="absolute -inset-2 bg-gradient-to-tr from-blue-500 to-indigo-500 rounded-2xl opacity-10 blur-xl"></div>
+                        <img src="hero-screenshot.png" alt="Smart Works Dashboard" class="relative rounded-xl shadow-xl border border-slate-100 w-full h-auto object-cover">
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="mkpis">
-          <div class="mk mkg"><span class="n">142</span><span class="l">حاضر</span></div>
-          <div class="mk mkw"><span class="n">8</span><span class="l">تأخير</span></div>
-          <div class="mk mkd"><span class="n">5</span><span class="l">غياب</span></div>
+    </section>
+
+    <section id="solutions" class="py-16 bg-white border-t border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-3">نظام متكامل يغنيك عن المعاملات الورقية</h2>
+                <p class="text-slate-600">كل ما تحتاجه لإدارة وتطوير فريق عملك ومتابعة مؤشرات الأداء والرواتب في مكان واحد سحابي آمن.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">الحضور والانصراف الذكي</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">تتبع فوري ومباشر لعمليات تسجيل الحضور والانصراف، مع دعم الورديات الليلية المتداخلة وحساب ساعات التأخير الإضافية بدقة.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-money-check-dollar"></i></div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">مسيرات الرواتب والأجور</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">احتساب تلقائي للرواتب بناءً على بيانات الحضور، الغياب، التأخير، والخصومات، مع إمكانية تصدير كشوف الرواتب بضغطة زر واحدة.</p>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-file-signature"></i></div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">إدارة الطلبات والإجازات</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">دورة موافقات رقمية مرنة لطلبات الإجازات، المأموريات، والسلف، تتيح للموظف التقديم وللمدير الاعتماد الفوري عبر النظام.</p>
+                </div>
+            </div>
         </div>
-        <div class="er"><div class="eri"><div class="erav" style="background:var(--primary-lt);color:var(--primary)">أح</div><div><div class="ern">أحمد محمد الشمري</div><div class="erid">#1042</div></div></div><div class="erx"><span class="ert">08:52 ص</span><span class="badge bp">حاضر</span></div></div>
-        <div class="er"><div class="eri"><div class="erav" style="background:var(--warning-lt);color:var(--warning)">سا</div><div><div class="ern">سارة عبدالله الزهراني</div><div class="erid">#1078</div></div></div><div class="erx"><span class="ert">09:18 ص</span><span class="badge bl">تأخير</span></div></div>
-        <div class="er"><div class="eri"><div class="erav" style="background:var(--primary-lt);color:var(--primary)">مع</div><div><div class="ern">محمد عمر القحطاني</div><div class="erid">#1091</div></div></div><div class="erx"><span class="ert">—</span><span class="badge bv">إجازة</span></div></div>
-        <div class="er"><div class="eri"><div class="erav" style="background:var(--danger-lt);color:var(--danger)">نو</div><div><div class="ern">نورة خالد العتيبي</div><div class="erid">#1055</div></div></div><div class="erx"><span class="ert">—</span><span class="badge ba">غياب</span></div></div>
-        <div class="er"><div class="eri"><div class="erav" style="background:var(--success-lt);color:var(--success)">فا</div><div><div class="ern">فاطمة علي العمري</div><div class="erid">#1063</div></div></div><div class="erx"><span class="ert">08:45 ص</span><span class="badge bp">حاضر</span></div></div>
-      </div>
-      <div>
-        <div class="sec-badge"><i class="fa-solid fa-star"></i> المميزات</div>
-        <h2 class="sec-title">تقنية <span>عالمية</span> بروح عربية</h2>
-        <p class="sec-sub">منصتنا مصممة من الألف إلى الياء لتلبية احتياجات الشركات العربية.</p>
-        <div class="fitems" style="margin-top:32px">
-          <div class="fi"><div class="fico ib"><i class="fa-solid fa-globe"></i></div><div class="fit"><h4>دعم كامل للغة العربية</h4><p>واجهة عربية بالكامل مع دعم التقويم الهجري وقوانين العمل في كل دولة عربية.</p></div></div>
-          <div class="fi"><div class="fico ip"><i class="fa-solid fa-robot"></i></div><div class="fit"><h4>ذكاء اصطناعي محلي</h4><p>مساعد AI يتحدث العربية ويحلل بيانات الحضور ويقدم توصيات فورية لمديري الموارد البشرية.</p></div></div>
-          <div class="fi"><div class="fico ig"><i class="fa-solid fa-shield-halved"></i></div><div class="fit"><h4>سحابي وآمن بالكامل</h4><p>بنية تحتية سحابية محمية بأعلى معايير الأمان مع بيانات مستضافة في المنطقة العربية.</p></div></div>
-          <div class="fi"><div class="fico io"><i class="fa-solid fa-mobile-screen"></i></div><div class="fit"><h4>متاح على كل الأجهزة</h4><p>تجربة موحدة على الحاسوب والجوال والتابلت في أي وقت ومن أي مكان.</p></div></div>
+    </section>
+
+    <section id="features" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="w-full lg:w-1/2">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4 leading-tight">لماذا تختار منصة <br><span class="text-blue-600">Smart Works Solutions؟</span></h2>
+                    <p class="text-slate-600 mb-8 leading-relaxed">لقد صممنا النظام ليلبي المتطلبات الفريدة للشركات في السوق المصري والعربي، مع التركيز على السهولة المطلقة والأمان التام لبياناتك.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs"><i class="fa-solid fa-check"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-base">دعم التوقيت الصيفي تلقائياً</h4>
+                                <p class="text-xs text-slate-600 mt-0.5">تحديث تلقائي لساعات العمل والأنظمة دون أي تداخل أو فقدان لبيانات تسجيل حضور الموظفين.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs"><i class="fa-solid fa-check"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-base">تنبيهات فورية ومباشرة</h4>
+                                <p class="text-xs text-slate-600 mt-0.5">إشعارات لحظية للمديرين عند تقديم أي طلب جديد، وتنبيهات للموظفين بحالة طلباتهم أولاً بأول.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 grid grid-cols-2 gap-4">
+                    <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm text-center">
+                        <div class="text-3xl text-blue-600 mb-2"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h4 class="font-bold text-slate-800 text-sm">أمان مشدد وسحابي</h4>
+                    </div>
+                    <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm text-center">
+                        <div class="text-3xl text-indigo-600 mb-2"><i class="fa-solid fa-chart-pie"></i></div>
+                        <h4 class="font-bold text-slate-800 text-sm">تقارير دقيقة وتحليلات</h4>
+                    </div>
+                    <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm text-center">
+                        <div class="text-3xl text-emerald-600 mb-2"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                        <h4 class="font-bold text-slate-800 text-sm">متوافق بالكامل مع الموبايل</h4>
+                    </div>
+                    <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm text-center">
+                        <div class="text-3xl text-purple-600 mb-2"><i class="fa-solid fa-headset"></i></div>
+                        <h4 class="font-bold text-slate-800 text-sm">دعم فني متواصل</h4>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- PROCESS -->
-<section id="process">
-  <div class="si">
-    <div class="sh c">
-      <div class="sec-badge" style="justify-content:center"><i class="fa-solid fa-diagram-project"></i> كيف نعمل</div>
-      <h2 class="sec-title" style="max-width:100%;text-align:center">أربع خطوات للانطلاق <span>بسرعة</span></h2>
-    </div>
-    <div class="pg">
-      <div class="ps"><div class="psc">١</div><h4>التقييم والتحليل</h4><p>ندرس احتياجات مؤسستك وهيكلها التنظيمي لتصميم الحل الأمثل.</p></div>
-      <div class="ps"><div class="psc">٢</div><h4>الإعداد والتهيئة</h4><p>نعدّ المنصة وندمجها مع أنظمتك الحالية وأجهزة البصمة خلال أيام.</p></div>
-      <div class="ps"><div class="psc">٣</div><h4>التدريب والتأهيل</h4><p>ندرّب فريقك على استخدام النظام بكفاءة مع دعم فني متواصل.</p></div>
-      <div class="ps"><div class="psc">٤</div><h4>الانطلاق والدعم</h4><p>انطلق بثقة مع دعمنا المستمر وتحديثات دورية بدون تكاليف إضافية.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing">
-  <div class="si">
-    <div class="sh c">
-      <div class="sec-badge" style="justify-content:center"><i class="fa-solid fa-tags"></i> خطط الأسعار</div>
-      <h2 class="sec-title" style="max-width:100%;text-align:center">ابدأ مجاناً وتوسّع <span>بلا حدود</span></h2>
-      <p class="sec-sub" style="text-align:center;margin:10px auto 0;max-width:100%">خطط مرنة تناسب الأفراد والشركات الناشئة والمؤسسات الكبرى.</p>
-    </div>
-    <div class="plg">
-
-      <div class="plc">
-        <div class="pl-name">مجانية — Free</div>
-        <div class="pl-users"><i class="fa-solid fa-user"></i> مستخدم واحد فقط</div>
-        <div class="pl-price"><span class="a">0</span><span class="c">ر.س</span><span class="p">/ شهرياً</span></div>
-        <p class="pl-desc">مثالية للأفراد وأصحاب المشاريع الصغيرة الراغبين في تجربة النظام بدون أي التزام.</p>
-        <div class="pl-div"></div>
-        <ul class="pl-feats">
-          <li><i class="fa-solid fa-check ck"></i> نظام الحضور والانصراف</li>
-          <li><i class="fa-solid fa-check ck"></i> التقارير الأساسية</li>
-          <li><i class="fa-solid fa-check ck"></i> إدارة الإجازات</li>
-          <li><i class="fa-solid fa-check ck"></i> دعم فني بالبريد</li>
-          <li class="off"><i class="fa-solid fa-xmark xx"></i> تحليلات AI</li>
-          <li class="off"><i class="fa-solid fa-xmark xx"></i> إدارة الرواتب</li>
-          <li class="off"><i class="fa-solid fa-xmark xx"></i> لوحة تحكم متقدمة</li>
-        </ul>
-        <button class="pl-btn po">ابدأ مجاناً الآن</button>
-      </div>
-
-      <div class="plc feat">
-        <div class="pl-pop">⭐ الأكثر شعبية</div>
-        <div class="pl-name">احترافية — Pro</div>
-        <div class="pl-users"><i class="fa-solid fa-users"></i> حتى 5 مستخدمين</div>
-        <div class="pl-price">
-          <span class="a" style="background:linear-gradient(135deg,var(--primary),#7b5ea7);-webkit-background-clip:text;-webkit-text-fill-color:transparent">299</span>
-          <span class="c">ر.س</span><span class="p">/ شهرياً</span>
+    <section id="how-it-works" class="py-16 bg-white border-t border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-slate-900 mb-10">ابدأ في 3 خطوات بسيطة فقط</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto relative">
+                <div class="relative z-10 bg-white p-6">
+                    <div class="w-12 h-12 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center mx-auto mb-4 text-lg shadow-md shadow-blue-600/20">1</div>
+                    <h3 class="font-bold text-slate-900 mb-2">أنشئ حساب شركتك</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">سجل بيانات المنشأة الأساسية في دقيقة واحدة وابدأ الفترة التجريبية مجاناً وبدون بطاقة ائتمان.</p>
+                </div>
+                <div class="relative z-10 bg-white p-6">
+                    <div class="w-12 h-12 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center mx-auto mb-4 text-lg shadow-md shadow-blue-600/20">2</div>
+                    <h3 class="font-bold text-slate-900 mb-2">أضف الهيكل والموظفين</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">قم برفع ملف الموظفين أو إدخالهم وتعيين الإدارات والورديات وقواعد الحضور والانصراف المعتمدة لديك.</p>
+                </div>
+                <div class="relative z-10 bg-white p-6">
+                    <div class="w-12 h-12 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center mx-auto mb-4 text-lg shadow-md shadow-blue-600/20">3</div>
+                    <h3 class="font-bold text-slate-900 mb-2">أتمت أعمالك وانطلق</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">تابع مؤشرات الحضور والطلبات والرواتب بشكل آلي وفوري عبر لوحة التحكم الذكية ومن أي مكان.</p>
+                </div>
+            </div>
         </div>
-        <p class="pl-desc">مثالية للفرق الصغيرة والشركات الناشئة التي تحتاج حلاً متكاملاً بسعر مناسب.</p>
-        <div class="pl-div"></div>
-        <ul class="pl-feats">
-          <li><i class="fa-solid fa-check ck"></i> نظام الحضور والانصراف</li>
-          <li><i class="fa-solid fa-check ck"></i> تقارير تفصيلية متقدمة</li>
-          <li><i class="fa-solid fa-check ck"></i> إدارة الإجازات والغياب</li>
-          <li><i class="fa-solid fa-check ck"></i> تحليلات AI باللغة العربية</li>
-          <li><i class="fa-solid fa-check ck"></i> إدارة الرواتب الأساسية</li>
-          <li><i class="fa-solid fa-check ck"></i> دعم فني بالأولوية</li>
-          <li class="off"><i class="fa-solid fa-xmark xx"></i> لوحة تحكم شاملة</li>
-        </ul>
-        <button class="pl-btn pp">ابدأ تجربة 30 يوم مجاناً</button>
-      </div>
+    </section>
 
-      <div class="plc">
-        <div class="pl-name">مؤسسية — Enterprise</div>
-        <div class="pl-users"><i class="fa-solid fa-building"></i> مستخدمون غير محدودين</div>
-        <div class="pl-price"><span class="a">999</span><span class="c">ر.س</span><span class="p">/ شهرياً</span></div>
-        <p class="pl-desc">للمؤسسات الكبرى التي تحتاج حلاً شاملاً مع لوحة تحكم متكاملة ودعم مخصص.</p>
-        <div class="pl-div"></div>
-        <ul class="pl-feats">
-          <li><i class="fa-solid fa-check ck"></i> كل مميزات الخطة الاحترافية</li>
-          <li><i class="fa-solid fa-check ck"></i> لوحة تحكم شاملة ومتقدمة</li>
-          <li><i class="fa-solid fa-check ck"></i> مستخدمون غير محدودين</li>
-          <li><i class="fa-solid fa-check ck"></i> تكامل مع جميع الأنظمة</li>
-          <li><i class="fa-solid fa-check ck"></i> إدارة رواتب متكاملة</li>
-          <li><i class="fa-solid fa-check ck"></i> مدير حساب مخصص</li>
-          <li><i class="fa-solid fa-check ck"></i> دعم فني 24/7</li>
-        </ul>
-        <button class="pl-btn po">تواصل مع فريق المبيعات</button>
-      </div>
+    <section id="pricing" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">خطط أسعار مرنة تناسب جميع الشركات</h2>
+            <p class="text-slate-600 mb-10 max-w-md mx-auto text-sm">اختر الخطة المناسبة لحجم أعمالك وابدأ في تنظيم وإدارة مؤسستك اليوم وبأفضل تكلفة.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-4">الخطة الأساسية</h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-extrabold text-slate-900">450</span>
+                            <span class="text-slate-500 font-medium text-sm">ج.م / شهرياً</span>
+                        </div>
+                        <ul class="text-right space-y-3 text-slate-600 mb-8 text-sm">
+                            <li><i class="fa-solid fa-check text-emerald-500 ml-2"></i> حتى 15 موظف</li>
+                            <li><i class="fa-solid fa-check text-emerald-500 ml-2"></i> نظام الحضور والانصراف الذكي</li>
+                            <li><i class="fa-solid fa-check text-emerald-500 ml-2"></i> إدارة الإجازات والطلبات</li>
+                        </ul>
+                    </div>
+                    <button class="w-full py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold transition-all text-sm">ابدأ الآن</button>
+                </div>
 
-    </div>
-  </div>
-</section>
+                <div class="bg-white p-8 rounded-2xl border-2 border-blue-600 shadow-md relative flex flex-col justify-between transform lg:scale-105">
+                    <span class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">الأكثر طلباً 🔥</span>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-4">الخطة المتقدمة</h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-extrabold text-slate-900">1,200</span>
+                            <span class="text-slate-500 font-medium text-sm">ج.م / شهرياً</span>
+                        </div>
+                        <ul class="text-right space-y-3 text-slate-600 mb-8 text-sm">
+                            <li><i class="fa-solid fa-check text-emerald-500 ml-2"></i> حتى 50 موظف</li>
+                            <li><i class="fa-solid fa-check text-emerald-500 ml-2"></i> حسابات مسيرات الرواتب تلقائياً</li>
+                            <li><i class="fa-solid fa-check text-emerald-500 ml-2"></i> تقارير وتحليلات أداء متقدمة</li>
+                            <li><i class="fa-solid fa-check text-emerald-500 ml-2"></i> دعم فني مخصص على مدار الساعة</li>
+                        </ul>
+                    </div>
+                    <button class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-all shadow-lg shadow-blue-600/20 text-sm">ابدأ الفترة التجريبية</button>
+                </div>
 
-<!-- CLIENTS -->
-<section id="clients">
-  <div class="si">
-    <div class="sh c">
-      <div class="sec-badge" style="justify-content:center"><i class="fa-solid fa-heart"></i> عملاؤنا</div>
-      <h2 class="sec-title" style="max-width:100%;text-align:center">يثق بنا <span>رواد الأعمال</span> في المنطقة</h2>
-    </div>
-    <div class="tg">
-      <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-body">وفّر علينا النظام أكثر من 40 ساعة شهرياً من العمل اليدوي في حسابات الرواتب والحضور. الدعم الفني ممتاز والنظام يتعامل مع خصوصية السوق السعودي باحترافية.</p><div class="tc-auth"><div class="tav">خع</div><div><div class="tn">خالد العمري</div><div class="tr">مدير موارد بشرية — مجموعة الرياض التجارية</div></div></div></div>
-      <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-body">النظام يتعامل مع خصوصية السوق المصري باحترافية عالية. واجهة عربية سلسة وتقارير دقيقة جداً ساعدتنا على اتخاذ قرارات أفضل.</p><div class="tc-auth"><div class="tav">مح</div><div><div class="tn">محمد حسن</div><div class="tr">مدير تقنية — شركة مصر للتكنولوجيا</div></div></div></div>
-      <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-body">ربطنا 3 فروع في دول مختلفة على نفس النظام. التكامل مع Google Workspace رائع وسهّل علينا العمل الموزع بشكل كبير.</p><div class="tc-auth"><div class="tav">سأ</div><div><div class="tn">سارة الأحمد</div><div class="tr">مديرة عمليات — شركة الخليج للاستشارات</div></div></div></div>
-    </div>
-    <div class="logos">
-      <div class="lc"><i class="fa-solid fa-building-columns"></i> مجموعة الرياض</div>
-      <div class="lc"><i class="fa-solid fa-hospital"></i> NMC Healthcare</div>
-      <div class="lc"><i class="fa-solid fa-landmark"></i> Arab National Bank</div>
-      <div class="lc"><i class="fa-solid fa-store"></i> Majid Al Futtaim</div>
-      <div class="lc"><i class="fa-solid fa-industry"></i> Egypt Foods Group</div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section id="cta">
-  <h2>جاهز لتحويل إدارة مواردك البشرية؟</h2>
-  <p>ابدأ تجربتك المجانية اليوم لمدة 30 يوماً. لا يلزم بطاقة ائتمان.</p>
-  <div class="cta-btns">
-    <button class="bw"><i class="fa-solid fa-rocket"></i> ابدأ مجاناً الآن</button>
-    <button class="bgw"><i class="fa-solid fa-phone"></i> تحدث مع خبير</button>
-  </div>
-  <p class="note">أو راسلنا: info@smartworks-solutions.com</p>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="fi2">
-    <div class="ft">
-      <div>
-        <div class="fb-logo">
-          <div class="nav-mark">SW</div>
-          <div>
-            <div style="font-family:'Montserrat',sans-serif;font-weight:700;color:#fff;font-size:14px">Smart Works Solutions</div>
-            <div style="font-size:11px;color:rgba(255,255,255,.38)">حلول تقنية ذكية للموارد البشرية</div>
-          </div>
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-4">خطة الشركات</h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-extrabold text-slate-900">3,500</span>
+                            <span class="text-slate-500 font-medium text-sm">ج.م / شهرياً</span>
+                        </div>
+                        <ul class="text-right space-y-3 text-slate-600 mb-8 text-sm">
+                            <li><i class="fa-solid fa-check text-emerald-500 ml-2"></i> عدد موظفين غير محدود</li>
+                            <li><i class="fa-solid fa-check text-emerald-500 ml-2"></i> ربط برامجي كامل وتخصيص API</li>
+                            <li><i class="fa-solid fa-check text-emerald-500 ml-2"></i> خادم سحابي مخصص وبأعلى معايير الأمان</li>
+                        </ul>
+                    </div>
+                    <button class="w-full py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold transition-all text-sm">تواصل معنا</button>
+                </div>
+            </div>
         </div>
-        <p class="fb-desc">نمكّن الشركات العربية من أتمتة عمليات الموارد البشرية بالكامل بتقنية عالمية وتجربة عربية أصيلة.</p>
-        <a href="https://script.google.com/macros/s/YOUR_APP_ID/exec" target="_blank" class="fab">
-          <i class="fa-solid fa-fingerprint"></i> دخول التطبيق
-        </a>
-      </div>
-      <div class="fc">
-        <h5>الشركة</h5>
-        <ul>
-          <li><a href="#home">من نحن</a></li>
-          <li><a href="#solutions">حلولنا</a></li>
-          <li><a href="#process">كيف نعمل</a></li>
-          <li><a href="#clients">عملاؤنا</a></li>
-        </ul>
-      </div>
-      <div class="fc">
-        <h5>المنتج</h5>
-        <ul>
-          <li><a href="#features">المميزات</a></li>
-          <li><a href="#pricing">الأسعار</a></li>
-          <li><a href="https://script.google.com/macros/s/YOUR_APP_ID/exec" target="_blank">التطبيق</a></li>
-          <li><a href="#">دليل المستخدم</a></li>
-        </ul>
-      </div>
-      <div class="fc">
-        <h5>تواصل معنا</h5>
-        <ul>
-          <li><a href="mailto:info@smartworks-solutions.com"><i class="fa-solid fa-envelope"></i> البريد الإلكتروني</a></li>
-          <li><a href="https://wa.me/966500000000" target="_blank"><i class="fa-brands fa-whatsapp"></i> واتساب</a></li>
-          <li><a href="tel:+966500000000"><i class="fa-solid fa-phone"></i> اتصل بنا</a></li>
-          <li><a href="#"><i class="fa-solid fa-headset"></i> الدعم الفني</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="fdiv"></div>
-    <div class="fb">
-      <div class="fcopy">© 2025 Smart Works Solutions. جميع الحقوق محفوظة.</div>
-      <div class="sr">
-        <a href="https://linkedin.com"  target="_blank" class="sl" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="https://twitter.com"   target="_blank" class="sl" title="X"><i class="fa-brands fa-x-twitter"></i></a>
-        <a href="https://instagram.com" target="_blank" class="sl" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://youtube.com"   target="_blank" class="sl" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-        <a href="https://wa.me/966500000000" target="_blank" class="sl" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="https://t.me/smartworks" target="_blank" class="sl" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
-      </div>
-    </div>
-  </div>
-</footer>
+    </section>
 
-<script>
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const id=a.getAttribute('href');
-    if(id==='#')return;
-    const t=document.querySelector(id);
-    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
-  });
-});
-const secs=[...document.querySelectorAll('section[id]')];
-const nas=document.querySelectorAll('.na');
-function setActive(){
-  const sy=window.scrollY+90;
-  let cur='';
-  secs.forEach(s=>{if(sy>=s.offsetTop)cur=s.id;});
-  nas.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
-}
-window.addEventListener('scroll',setActive,{passive:true});
-setActive();
-window.addEventListener('scroll',()=>{
-  document.querySelector('nav').style.boxShadow=
-    window.scrollY>20?'0 4px 24px rgba(67,97,238,.12)':'0 2px 12px rgba(67,97,238,.07)';
-},{passive:true});
-</script>
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-center text-xs">
+        <p>© 2026 Smart Works Solutions. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <a href="https://wa.me/201000000000" target="_blank" class="fixed bottom-6 left-6 z-50 p-0 rounded-full bg-[#25D366] hover:bg-[#20ba5a] shadow-xl hover:scale-110 transition-all duration-300 w-14 h-14 flex items-center justify-center" aria-label="WhatsApp Contact">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon" class="w-8 h-8">
+    </a>
+
 </body>
 </html>
