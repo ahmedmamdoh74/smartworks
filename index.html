@@ -6,9 +6,11 @@
     <title>Smart Works Solutions – حلول تقنية ذكية للموارد البشرية</title>
     
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght=300;400;500;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         :root{
@@ -85,24 +87,24 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
                 
-                <div class="w-full md:w-1/2 text-center md:text-right space-y-5">
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs md:text-sm font-medium mx-auto md:mx-0">
+                <div class="w-full md:w-1/2 text-center md:text-right space-y-5 hero-text-container">
+                    <div id="hero-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs md:text-sm font-medium mx-auto md:mx-0">
                         <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
                         الحل الأمثل لأتمتة الموارد البشرية في السوق العربي
                     </div>
                     
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 leading-tight">
+                    <h1 id="hero-title" class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 leading-tight">
                         Smart Works Solutions <br>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                             حلول تقنية ذكية لإدارة الموارد البشرية
                         </span>
                     </h1>
                     
-                    <p class="text-base text-slate-600 max-w-xl mx-auto md:mx-0 leading-relaxed">
+                    <p id="hero-desc" class="text-base text-slate-600 max-w-xl mx-auto md:mx-0 leading-relaxed">
                         نمكّن الشركات العربية من أتمتة عمليات الموارد البشرية بالكامل – من الحضور والانصراف إلى الرواتب والأداء – بتقنية عالمية وتجربة عربية أصيلة.
                     </p>
                     
-                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
+                    <div id="hero-btns" class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
                         <a href="#pricing" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-lg shadow-blue-600/20 transition-all duration-300 transform hover:-translate-y-0.5 text-sm md:text-base">
                             ابدأ مجاناً 🚀
                         </a>
@@ -111,23 +113,23 @@
                         </a>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-2 pt-6 max-w-md mx-auto md:mx-0 border-t border-slate-100">
+                    <div id="hero-stats" class="grid grid-cols-3 gap-2 pt-6 max-w-md mx-auto md:mx-0 border-t border-slate-100">
                         <div class="text-center md:text-right">
-                            <h4 class="text-lg md:text-2xl font-bold text-blue-600">+500</h4>
+                            <h4 class="text-lg md:text-2xl font-bold text-blue-600"><span id="count-companies">0</span>+</h4>
                             <p class="text-xs text-slate-500">شركة تثق بنا</p>
                         </div>
                         <div class="text-center md:text-right">
-                            <h4 class="text-lg md:text-2xl font-bold text-blue-600">+15</h4>
+                            <h4 class="text-lg md:text-2xl font-bold text-blue-600"><span id="count-countries">0</span>+</h4>
                             <p class="text-xs text-slate-500">دولة عربية</p>
                         </div>
                         <div class="text-center md:text-right">
-                            <h4 class="text-lg md:text-2xl font-bold text-blue-600">98%</h4>
+                            <h4 class="text-lg md:text-2xl font-bold text-blue-600"><span id="count-satisfaction">0</span>%</h4>
                             <p class="text-xs text-slate-500">رضا العملاء</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="w-full md:w-1/2 flex justify-center mt-6 md:mt-0">
+                <div id="hero-img-box" class="w-full md:w-1/2 flex justify-center mt-6 md:mt-0">
                     <div class="relative w-full max-w-md md:max-w-none">
                         <div class="absolute -inset-2 bg-gradient-to-tr from-blue-500 to-indigo-500 rounded-2xl opacity-10 blur-xl"></div>
                         <img src="hero-screenshot.png" alt="Smart Works Dashboard" class="relative rounded-xl shadow-xl border border-slate-100 w-full h-auto object-cover">
@@ -140,23 +142,23 @@
 
     <section id="solutions" class="py-16 bg-white border-t border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
+            <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
                 <h2 class="text-3xl font-bold text-slate-900 mb-3">نظام متكامل يغنيك عن المعاملات الورقية</h2>
                 <p class="text-slate-600">كل ما تحتاجه لإدارة وتطوير فريق عملك ومتابعة مؤشرات الأداء والرواتب في مكان واحد سحابي آمن.</p>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-all">
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-all" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-clock-rotate-left"></i></div>
                     <h3 class="text-lg font-bold text-slate-900 mb-2">الحضور والانصراف الذكي</h3>
                     <p class="text-sm text-slate-600 leading-relaxed">تتبع فوري ومباشر لعمليات تسجيل الحضور والانصراف، مع دعم الورديات الليلية المتداخلة وحساب ساعات التأخير الإضافية بدقة.</p>
                 </div>
-                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-all">
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-all" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-money-check-dollar"></i></div>
                     <h3 class="text-lg font-bold text-slate-900 mb-2">مسيرات الرواتب والأجور</h3>
                     <p class="text-sm text-slate-600 leading-relaxed">احتساب تلقائي للرواتب بناءً على بيانات الحضور، الغياب، التأخير، والخصومات، مع إمكانية تصدير كشوف الرواتب بضغطة زر واحدة.</p>
                 </div>
-                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-all">
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-all" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-file-signature"></i></div>
                     <h3 class="text-lg font-bold text-slate-900 mb-2">إدارة الطلبات والإجازات</h3>
                     <p class="text-sm text-slate-600 leading-relaxed">دورة موافقات رقمية مرنة لطلبات الإجازات، المأموريات، والسلف، تتيح للموظف التقديم وللمدير الاعتماد الفوري عبر النظام.</p>
@@ -168,7 +170,7 @@
     <section id="features" class="py-16 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center gap-12">
-                <div class="w-full lg:w-1/2">
+                <div class="w-full lg:w-1/2" data-aos="fade-left">
                     <h2 class="text-3xl font-bold text-slate-900 mb-4 leading-tight">لماذا تختار منصة <br><span class="text-blue-600">Smart Works Solutions؟</span></h2>
                     <p class="text-slate-600 mb-8 leading-relaxed">لقد صممنا النظام ليلبي المتطلبات الفريدة للشركات في السوق المصري والعربي، مع التركيز على السهولة المطلقة والأمان التام لبياناتك.</p>
                     
@@ -189,20 +191,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-full lg:w-1/2 grid grid-cols-2 gap-4">
-                    <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm text-center">
+                <div class="w-full lg:w-1/2 grid grid-cols-2 gap-4" data-aos="fade-right">
+                    <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm text-center hover:scale-105 transition-transform duration-300">
                         <div class="text-3xl text-blue-600 mb-2"><i class="fa-solid fa-shield-halved"></i></div>
                         <h4 class="font-bold text-slate-800 text-sm">أمان مشدد وسحابي</h4>
                     </div>
-                    <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm text-center">
+                    <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm text-center hover:scale-105 transition-transform duration-300">
                         <div class="text-3xl text-indigo-600 mb-2"><i class="fa-solid fa-chart-pie"></i></div>
                         <h4 class="font-bold text-slate-800 text-sm">تقارير دقيقة وتحليلات</h4>
                     </div>
-                    <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm text-center">
+                    <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm text-center hover:scale-105 transition-transform duration-300">
                         <div class="text-3xl text-emerald-600 mb-2"><i class="fa-solid fa-mobile-screen-button"></i></div>
                         <h4 class="font-bold text-slate-800 text-sm">متوافق بالكامل مع الموبايل</h4>
                     </div>
-                    <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm text-center">
+                    <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm text-center hover:scale-105 transition-transform duration-300">
                         <div class="text-3xl text-purple-600 mb-2"><i class="fa-solid fa-headset"></i></div>
                         <h4 class="font-bold text-slate-800 text-sm">دعم فني متواصل</h4>
                     </div>
@@ -213,20 +215,20 @@
 
     <section id="how-it-works" class="py-16 bg-white border-t border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-slate-900 mb-10">ابدأ في 3 خطوات بسيطة فقط</h2>
+            <h2 class="text-3xl font-bold text-slate-900 mb-10" data-aos="fade-up">ابدأ في 3 خطوات بسيطة فقط</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto relative">
-                <div class="relative z-10 bg-white p-6">
+                <div class="relative z-10 bg-white p-6" data-aos="zoom-in" data-aos-delay="100">
                     <div class="w-12 h-12 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center mx-auto mb-4 text-lg shadow-md shadow-blue-600/20">1</div>
                     <h3 class="font-bold text-slate-900 mb-2">أنشئ حساب شركتك</h3>
                     <p class="text-xs text-slate-600 leading-relaxed">سجل بيانات المنشأة الأساسية في دقيقة واحدة وابدأ الفترة التجريبية مجاناً وبدون بطاقة ائتمان.</p>
                 </div>
-                <div class="relative z-10 bg-white p-6">
+                <div class="relative z-10 bg-white p-6" data-aos="zoom-in" data-aos-delay="200">
                     <div class="w-12 h-12 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center mx-auto mb-4 text-lg shadow-md shadow-blue-600/20">2</div>
                     <h3 class="font-bold text-slate-900 mb-2">أضف الهيكل والموظفين</h3>
                     <p class="text-xs text-slate-600 leading-relaxed">قم برفع ملف الموظفين أو إدخالهم وتعيين الإدارات والورديات وقواعد الحضور والانصراف المعتمدة لديك.</p>
                 </div>
-                <div class="relative z-10 bg-white p-6">
+                <div class="relative z-10 bg-white p-6" data-aos="zoom-in" data-aos-delay="300">
                     <div class="w-12 h-12 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center mx-auto mb-4 text-lg shadow-md shadow-blue-600/20">3</div>
                     <h3 class="font-bold text-slate-900 mb-2">أتمت أعمالك وانطلق</h3>
                     <p class="text-xs text-slate-600 leading-relaxed">تابع مؤشرات الحضور والطلبات والرواتب بشكل آلي وفوري عبر لوحة التحكم الذكية ومن أي مكان.</p>
@@ -237,11 +239,11 @@
 
     <section id="pricing" class="py-16 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-slate-900 mb-2">خطط أسعار مرنة تناسب جميع الشركات</h2>
-            <p class="text-slate-600 mb-10 max-w-md mx-auto text-sm">اختر الخطة المناسبة لحجم أعمالك وابدأ في تنظيم وإدارة مؤسستك اليوم وبأفضل تكلفة.</p>
+            <h2 class="text-3xl font-bold text-slate-900 mb-2" data-aos="fade-up">خطط أسعار مرنة تناسب جميع الشركات</h2>
+            <p class="text-slate-600 mb-10 max-w-md mx-auto text-sm" data-aos="fade-up" data-aos-delay="100">اختر الخطة المناسبة لحجم أعمالك وابدأ في تنظيم وإدارة مؤسستك اليوم وبأفضل تكلفة.</p>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
                     <div>
                         <h3 class="text-xl font-bold text-slate-800 mb-4">الخطة الأساسية</h3>
                         <div class="mb-6">
@@ -257,7 +259,7 @@
                     <button class="w-full py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold transition-all text-sm">ابدأ الآن</button>
                 </div>
 
-                <div class="bg-white p-8 rounded-2xl border-2 border-blue-600 shadow-md relative flex flex-col justify-between transform lg:scale-105">
+                <div class="bg-white p-8 rounded-2xl border-2 border-blue-600 shadow-md relative flex flex-col justify-between transform lg:scale-105" data-aos="fade-up" data-aos-delay="200">
                     <span class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">الأكثر طلباً 🔥</span>
                     <div>
                         <h3 class="text-xl font-bold text-slate-800 mb-4">الخطة المتقدمة</h3>
@@ -275,7 +277,7 @@
                     <button class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-all shadow-lg shadow-blue-600/20 text-sm">ابدأ الفترة التجريبية</button>
                 </div>
 
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
                     <div>
                         <h3 class="text-xl font-bold text-slate-800 mb-4">خطة الشركات</h3>
                         <div class="mb-6">
@@ -302,5 +304,42 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon" class="w-8 h-8">
     </a>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. تشغيل تأثيرات التمرير AOS لجميع السكاشن والبطاقات
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100
+            });
+
+            // 2. تشغيل حركات الدخول الأنيقة والمنظمة عبر GSAP للـ Hero وعنصر الصورة الثابتة
+            const heroTl = gsap.timeline();
+            heroTl.from("#hero-badge", { opacity: 0, y: -20, duration: 0.6, ease: "power2.out" })
+                  .from("#hero-title", { opacity: 0, y: 30, duration: 0.8, ease: "power3.out" }, "-=0.4")
+                  .from("#hero-desc", { opacity: 0, y: 20, duration: 0.6, ease: "power2.out" }, "-=0.5")
+                  .from("#hero-btns", { opacity: 0, scale: 0.9, duration: 0.5, ease: "back.out(1.7)" }, "-=0.4")
+                  .from("#hero-img-box", { opacity: 0, x: 50, duration: 0.8, ease: "power2.out" }, "-=0.6")
+                  .from("#hero-stats", { opacity: 0, y: 15, duration: 0.5, onComplete: startCounters }, "-=0.3");
+
+            // 3. تشغيل عداد الأرقام تصاعدياً بشكل سلس عند اكتمال حركة الـ Hero
+            function startCounters() {
+                const options = { decimalPlaces: 0, duration: 2.5, useEasing: true, useGrouping: true };
+                
+                const countCompanies = new countUp.CountUp('count-companies', 500, options);
+                const countCountries = new countUp.CountUp('count-countries', 15, options);
+                const countSatisfaction = new countUp.CountUp('count-satisfaction', 98, options);
+
+                if (!countCompanies.error) countCompanies.start();
+                if (!countCountries.error) countCountries.start();
+                if (!countSatisfaction.error) countSatisfaction.start();
+            }
+        });
+    </script>
 </body>
 </html>
