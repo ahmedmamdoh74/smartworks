@@ -5,10 +5,19 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Smart Works Solutions – حلول تقنية ذكية للموارد البشرية</title>
     
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght=300;400;500;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- ========== إضافات PWA الأساسية ========== -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4361ee">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SmartWorks">
+    <link rel="apple-touch-icon" href="https://your-website.com/icon-512.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="https://your-website.com/icon-512.png">
+    <!-- ======================================== -->
     
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 
     <style>
@@ -38,17 +47,39 @@
             justify-content:space-between; padding:0 40px;
             box-shadow:0 2px 12px rgba(67,97,238,.03); transition:all .3s
         }
-        .nav-logo{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:20px; color:var(--primary) }
-        .nav-logo-box{ width:36px; height:36px; background:linear-gradient(135deg,var(--primary),#7b2cbf); border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900 }
+        .nav-logo{ display:flex; align-items:center; }
+        .nav-logo img{ width:223px; height:61px; object-fit:contain; }
         .nav-links{ display:flex; align-items:center; gap:32px; list-style:none }
         .nav-links a{ text-decoration:none; color:var(--text2); font-weight:500; font-size:15px; transition:color .2s }
         .nav-links a:hover, .nav-links a.active{ color:var(--primary); font-weight:700 }
         .nav-btn{ background:var(--primary); color:#fff; padding:10px 20px; border-radius:10px; font-weight:600; font-size:14px; cursor:pointer; transition:all .2s; border:none }
         .nav-btn:hover{ background:var(--primary-h); transform:translateY(-1px); box-shadow:0 4px 12px rgba(67,97,238,.2) }
 
-        @media (max-w: 768px) {
+        @media (max-width: 768px) {
             nav { padding: 0 20px; }
             .nav-links { display: none; }
+            .nav-logo img{ width: 165px; height: 45px; }
+        }
+
+        /* تنسيق زر التثبيت (يظهر فقط عند دعم PWA) */
+        .install-btn {
+            background: #10b981;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-right: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .install-btn:hover {
+            background: #059669;
+            transform: scale(1.02);
         }
     </style>
     
@@ -69,10 +100,9 @@
 <body class="bg-slate-50 pt-[68px]">
 
     <nav>
-        <div class="nav-logo">
-            <div class="nav-logo-box">SW</div>
-            <span>Smart Works</span>
-        </div>
+        <a href="#hero" class="nav-logo">
+            <img src="logo.png" alt="Smart Works Solutions" width="223" height="61">
+        </a>
         <ul class="nav-links">
             <li><a href="#hero" class="active">الرئيسية</a></li>
             <li><a href="#solutions">حلولنا</a></li>
@@ -80,7 +110,9 @@
             <li><a href="#how-it-works">كيف نعمل</a></li>
             <li><a href="#pricing">الأسعار</a></li>
         </ul>
-        <button class="nav-btn"><i class="fa-solid fa-right-to-bracket ml-2"></i>دخول التطبيق</button>
+        <div style="display: flex; align-items: center;">
+            <button class="nav-btn" id="loginBtn"><i class="fa-solid fa-right-to-bracket ml-2"></i>دخول التطبيق</button>
+        </div>
     </nav>
 
     <section id="hero" class="relative pt-6 pb-12 md:pt-12 md:pb-20 overflow-hidden bg-gradient-to-b from-blue-50/40 to-white">
@@ -94,7 +126,6 @@
                     </div>
                     
                     <h1 id="hero-title" class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 leading-tight">
-                        Smart Works Solutions <br>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                             حلول تقنية ذكية لإدارة الموارد البشرية
                         </span>
@@ -309,16 +340,53 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            
-            // 1. تشغيل تأثيرات التمرير AOS لجميع السكاشن والبطاقات
-            AOS.init({
-                duration: 800,
-                once: true,
-                offset: 100
+        // Service Worker لتشغيل PWA وامكانية التثبيت
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(reg => {
+                    console.log('✅ Service Worker registered:', reg);
+                }).catch(err => {
+                    console.error('❌ Service Worker registration failed:', err);
+                });
             });
+        }
 
-            // 2. تشغيل حركات الدخول الأنيقة والمنظمة عبر GSAP للـ Hero وعنصر الصورة الثابتة
+        // متغير لحفظ حدث التثبيت
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // اضافة زر تثبيت اختياري في navbar
+            const navDiv = document.querySelector('nav div:last-child');
+            if(navDiv && !document.getElementById('installPwaBtn')) {
+                const installBtn = document.createElement('button');
+                installBtn.id = 'installPwaBtn';
+                installBtn.className = 'install-btn';
+                installBtn.innerHTML = '<i class="fa-solid fa-download"></i> تثبيت التطبيق';
+                installBtn.onclick = async () => {
+                    if(deferredPrompt) {
+                        deferredPrompt.prompt();
+                        const { outcome } = await deferredPrompt.userChoice;
+                        if(outcome === 'accepted') console.log('تم تثبيت PWA');
+                        deferredPrompt = null;
+                        installBtn.style.display = 'none';
+                    }
+                };
+                navDiv.appendChild(installBtn);
+            }
+        });
+
+        // دالة فتح رابط التطبيق مع تحسين PWA (عند ضغط "دخول التطبيق")
+        document.getElementById('loginBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            const appUrl = "https://script.google.com/macros/s/AKfycbxIpcVpae_hXM8ABQ4boZFjIIbBLejW7HXizDa0OlOVppJ8xuAhyTUi4b1OTx8J07ngLw/exec";
+            // محاولة فتح التطبيق بنفس النافذة (كـ PWA)
+            window.location.href = appUrl;
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            AOS.init({ duration: 800, once: true, offset: 100 });
+
             const heroTl = gsap.timeline();
             heroTl.from("#hero-badge", { opacity: 0, y: -20, duration: 0.6, ease: "power2.out" })
                   .from("#hero-title", { opacity: 0, y: 30, duration: 0.8, ease: "power3.out" }, "-=0.4")
@@ -327,14 +395,11 @@
                   .from("#hero-img-box", { opacity: 0, x: 50, duration: 0.8, ease: "power2.out" }, "-=0.6")
                   .from("#hero-stats", { opacity: 0, y: 15, duration: 0.5, onComplete: startCounters }, "-=0.3");
 
-            // 3. تشغيل عداد الأرقام تصاعدياً بشكل سلس عند اكتمال حركة الـ Hero
             function startCounters() {
                 const options = { decimalPlaces: 0, duration: 2.5, useEasing: true, useGrouping: true };
-                
                 const countCompanies = new countUp.CountUp('count-companies', 500, options);
                 const countCountries = new countUp.CountUp('count-countries', 15, options);
                 const countSatisfaction = new countUp.CountUp('count-satisfaction', 98, options);
-
                 if (!countCompanies.error) countCompanies.start();
                 if (!countCountries.error) countCountries.start();
                 if (!countSatisfaction.error) countSatisfaction.start();
