@@ -1,0 +1,14 @@
+{
+  "name": "Smart Works Solutions",
+  "short_name": "SmartWorks",
+  "start_url": "https://script.google.com/macros/s/AKfycbxIpcVpae_hXM8ABQ4boZFjIIbBLejW7HXizDa0OlOVppJ8xuAhyTUi4b1OTx8J07ngLw/exec",
+  "display": "standalone",
+  "theme_color": "#4361ee",
+  "icons": [
+    {
+      "src": "https://your-website.com/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
