@@ -8,7 +8,6 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght=300;400;500;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 
     <style>
@@ -29,8 +28,6 @@
             direction:rtl;
             overflow-x:hidden;
         }
-        
-        /* Navigation Style */
         nav{
             position:fixed; top:0; left:0; right:0; z-index:999; height:68px;
             background:rgba(255,255,255,.96); backdrop-filter:blur(20px);
@@ -46,7 +43,37 @@
         .nav-btn{ background:var(--primary); color:#fff; padding:10px 20px; border-radius:10px; font-weight:600; font-size:14px; cursor:pointer; transition:all .2s; border:none }
         .nav-btn:hover{ background:var(--primary-h); transform:translateY(-1px); box-shadow:0 4px 12px rgba(67,97,238,.2) }
 
-        @media (max-w: 768px) {
+        /* ===== Modal ===== */
+        #app-modal{
+            display:none; position:fixed; inset:0; z-index:99999;
+            background:rgba(0,0,0,0.6);
+            align-items:center; justify-content:center;
+        }
+        #app-modal.active{ display:flex; }
+        .modal-box{
+            background:#fff; border-radius:16px; padding:36px 28px;
+            max-width:420px; width:90%; text-align:center;
+            font-family:'Tajawal',sans-serif; direction:rtl;
+            position:relative; z-index:1;
+        }
+        .modal-icon{ font-size:52px; margin-bottom:14px; }
+        .modal-title{ font-size:19px; font-weight:700; color:#1a1d2e; margin-bottom:10px; }
+        .modal-desc{ font-size:14px; color:#5a607a; line-height:1.75; margin-bottom:22px; }
+        .modal-btn-primary{
+            background:#4361ee; color:#fff; border:none; border-radius:10px;
+            padding:13px 28px; font-size:15px; font-weight:700; cursor:pointer;
+            font-family:'Tajawal',sans-serif; width:100%; margin-bottom:10px;
+            transition:background .2s;
+        }
+        .modal-btn-primary:hover{ background:#3451d1; }
+        .modal-btn-secondary{
+            background:#f4f6fb; color:#4361ee; border:1.5px solid #4361ee; border-radius:10px;
+            padding:13px 28px; font-size:15px; font-weight:700; cursor:pointer;
+            font-family:'Tajawal',sans-serif; width:100%; transition:background .2s;
+        }
+        .modal-btn-secondary:hover{ background:#eef1fd; }
+
+        @media (max-width: 768px) {
             nav { padding: 0 20px; }
             .nav-links { display: none; }
             .nav-logo img{ width: 165px; height: 45px; }
@@ -69,6 +96,7 @@
 </head>
 <body class="bg-slate-50 pt-[68px]">
 
+    <!-- ===== NAVBAR ===== -->
     <nav>
         <a href="#hero" class="nav-logo">
             <img src="logo.png" alt="Smart Works Solutions" width="223" height="61">
@@ -80,82 +108,29 @@
             <li><a href="#how-it-works">كيف نعمل</a></li>
             <li><a href="#pricing">الأسعار</a></li>
         </ul>
-        
-<!-- زر دخول التطبيق -->
-<button class="nav-btn" onclick="openAppModal()">
-  <i class="fa-solid fa-right-to-bracket ml-2"></i>دخول التطبيق
-</button>
-
-<!-- النافذة المنبثقة - Overlay فقط بدون iframe -->
-<div id="app-modal" style="display:none; position:fixed; inset:0; z-index:9999;">
-  <!-- خلفية شفافة للإغلاق -->
-  <div onclick="closeAppModal()" style="position:absolute; inset:0; background:rgba(0,0,0,0.5);"></div>
-</div>
-
-<script>
-const APP_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
-
-let appWindow = null;
-
-function openAppModal() {
-  // حسابات حجم النافذة المنبثقة
-  const w = Math.min(1200, screen.availWidth * 0.92);
-  const h = screen.availHeight * 0.94;
-  const left = (screen.availWidth - w) / 2;
-  const top  = (screen.availHeight - h) / 2;
-
-  // فتح نافذة منبثقة نظيفة بدون شريط عنوان URL
-  appWindow = window.open(
-    APP_URL,
-    'SmartWorksApp',
-    `width=${Math.round(w)},height=${Math.round(h)},left=${Math.round(left)},top=${Math.round(top)},` +
-    'toolbar=no,menubar=no,location=no,status=no,scrollbars=yes,resizable=yes'
-  );
-
-  // إذا حجب المتصفح الـ popup أظهر رسالة توضيحية
-  if (!appWindow || appWindow.closed || typeof appWindow.closed === 'undefined') {
-    showPopupBlockedMsg();
-  }
-}
-
-function showPopupBlockedMsg() {
-  const modal = document.getElementById('app-modal');
-  modal.style.display = 'block';
-  modal.innerHTML = `
-    <div onclick="closeAppModal()" style="position:absolute;inset:0;background:rgba(0,0,0,0.6);"></div>
-    <div style="
-      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-      background:#fff; border-radius:16px; padding:32px 28px; max-width:400px; width:90%;
-      text-align:center; font-family:'Tajawal',sans-serif; direction:rtl; z-index:1;
-    ">
-      <div style="font-size:48px; margin-bottom:12px;">🚫</div>
-      <h3 style="font-size:18px; font-weight:700; color:#1a1d2e; margin-bottom:10px;">تم حجب النافذة المنبثقة</h3>
-      <p style="font-size:14px; color:#5a607a; line-height:1.7; margin-bottom:20px;">
-        يرجى السماح بالنوافذ المنبثقة من إعدادات المتصفح للموقع الحالي، ثم اضغط الزر أدناه مجدداً.
-      </p>
-      <button onclick="closeAppModal(); openAppModal();" style="
-        background:#4361ee; color:#fff; border:none; border-radius:10px;
-        padding:12px 28px; font-size:15px; font-weight:700; cursor:pointer;
-        font-family:'Tajawal',sans-serif; width:100%;
-      ">حاول مرة أخرى</button>
-      <button onclick="window.open('${APP_URL}','_blank')" style="
-        background:#f4f6fb; color:#4361ee; border:1px solid #4361ee; border-radius:10px;
-        padding:12px 28px; font-size:15px; font-weight:700; cursor:pointer;
-        font-family:'Tajawal',sans-serif; width:100%; margin-top:10px;
-      ">فتح في تبويب جديد</button>
-    </div>
-  `;
-}
-
-function closeAppModal() {
-  const modal = document.getElementById('app-modal');
-  modal.style.display = 'none';
-}
-
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closeAppModal(); });
-</script>
+        <button class="nav-btn" onclick="openAppModal()">
+            <i class="fa-solid fa-right-to-bracket ml-2"></i>دخول التطبيق
+        </button>
     </nav>
 
+    <!-- ===== POPUP MODAL (خارج nav تماماً) ===== -->
+    <div id="app-modal" onclick="handleModalClick(event)">
+        <div class="modal-box" id="modal-content">
+            <div class="modal-icon">🚫</div>
+            <h3 class="modal-title">تم حجب النافذة المنبثقة</h3>
+            <p class="modal-desc">
+                يرجى السماح بالنوافذ المنبثقة من إعدادات المتصفح للموقع الحالي، ثم اضغط الزر أدناه مجدداً.
+            </p>
+            <button class="modal-btn-primary" onclick="closeAppModal(); openAppModal();">
+                <i class="fa-solid fa-rotate-right ml-2"></i>حاول مرة أخرى
+            </button>
+            <button class="modal-btn-secondary" onclick="openInNewTab()">
+                <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>فتح في تبويب جديد
+            </button>
+        </div>
+    </div>
+
+    <!-- ===== HERO ===== -->
     <section id="hero" class="relative pt-6 pb-12 md:pt-12 md:pb-20 overflow-hidden bg-gradient-to-b from-blue-50/40 to-white">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
@@ -207,18 +182,17 @@ document.addEventListener('keydown', e => { if(e.key === 'Escape') closeAppModal
                         <img src="hero-screenshot.png" alt="Smart Works Dashboard" class="relative rounded-xl shadow-xl border border-slate-100 w-full h-auto object-cover">
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
+    <!-- ===== SOLUTIONS ===== -->
     <section id="solutions" class="py-16 bg-white border-t border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
                 <h2 class="text-3xl font-bold text-slate-900 mb-3">نظام متكامل يغنيك عن المعاملات الورقية</h2>
                 <p class="text-slate-600">كل ما تحتاجه لإدارة وتطوير فريق عملك ومتابعة مؤشرات الأداء والرواتب في مكان واحد سحابي آمن.</p>
             </div>
-            
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-all" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-clock-rotate-left"></i></div>
@@ -239,13 +213,13 @@ document.addEventListener('keydown', e => { if(e.key === 'Escape') closeAppModal
         </div>
     </section>
 
+    <!-- ===== FEATURES ===== -->
     <section id="features" class="py-16 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <div class="w-full lg:w-1/2" data-aos="fade-left">
                     <h2 class="text-3xl font-bold text-slate-900 mb-4 leading-tight">لماذا تختار منصة <br><span class="text-blue-600">Smart Works Solutions؟</span></h2>
                     <p class="text-slate-600 mb-8 leading-relaxed">لقد صممنا النظام ليلبي المتطلبات الفريدة للشركات في السوق المصري والعربي، مع التركيز على السهولة المطلقة والأمان التام لبياناتك.</p>
-                    
                     <div class="space-y-4">
                         <div class="flex items-start gap-4">
                             <div class="mt-1 w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs"><i class="fa-solid fa-check"></i></div>
@@ -285,10 +259,10 @@ document.addEventListener('keydown', e => { if(e.key === 'Escape') closeAppModal
         </div>
     </section>
 
+    <!-- ===== HOW IT WORKS ===== -->
     <section id="how-it-works" class="py-16 bg-white border-t border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold text-slate-900 mb-10" data-aos="fade-up">ابدأ في 3 خطوات بسيطة فقط</h2>
-            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto relative">
                 <div class="relative z-10 bg-white p-6" data-aos="zoom-in" data-aos-delay="100">
                     <div class="w-12 h-12 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center mx-auto mb-4 text-lg shadow-md shadow-blue-600/20">1</div>
@@ -309,11 +283,11 @@ document.addEventListener('keydown', e => { if(e.key === 'Escape') closeAppModal
         </div>
     </section>
 
+    <!-- ===== PRICING ===== -->
     <section id="pricing" class="py-16 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold text-slate-900 mb-2" data-aos="fade-up">خطط أسعار مرنة تناسب جميع الشركات</h2>
             <p class="text-slate-600 mb-10 max-w-md mx-auto text-sm" data-aos="fade-up" data-aos-delay="100">اختر الخطة المناسبة لحجم أعمالك وابدأ في تنظيم وإدارة مؤسستك اليوم وبأفضل تكلفة.</p>
-            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
                     <div>
@@ -330,7 +304,6 @@ document.addEventListener('keydown', e => { if(e.key === 'Escape') closeAppModal
                     </div>
                     <button class="w-full py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold transition-all text-sm">ابدأ الآن</button>
                 </div>
-
                 <div class="bg-white p-8 rounded-2xl border-2 border-blue-600 shadow-md relative flex flex-col justify-between transform lg:scale-105" data-aos="fade-up" data-aos-delay="200">
                     <span class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">الأكثر طلباً 🔥</span>
                     <div>
@@ -348,7 +321,6 @@ document.addEventListener('keydown', e => { if(e.key === 'Escape') closeAppModal
                     </div>
                     <button class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-all shadow-lg shadow-blue-600/20 text-sm">ابدأ الفترة التجريبية</button>
                 </div>
-
                 <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
                     <div>
                         <h3 class="text-xl font-bold text-slate-800 mb-4">خطة الشركات</h3>
@@ -381,35 +353,77 @@ document.addEventListener('keydown', e => { if(e.key === 'Escape') closeAppModal
     <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            
-            // 1. تشغيل تأثيرات التمرير AOS لجميع السكاشن والبطاقات
-            AOS.init({
-                duration: 800,
-                once: true,
-                offset: 100
-            });
+        /* ============================================================
+           ضع رابط تطبيق Apps Script هنا
+        ============================================================ */
+        const APP_URL = 'https://script.google.com/macros/s/AKfycbxIpcVpae_hXM8ABQ4boZFjIIbBLejW7HXizDa0OlOVppJ8xuAhyTUi4b1OTx8J07ngLw/exec';
 
-            // 2. تشغيل حركات الدخول الأنيقة والمنظمة عبر GSAP للـ Hero وعنصر الصورة الثابتة
+        /* ---- فتح التطبيق ---- */
+        function openAppModal() {
+            const w    = Math.min(1280, screen.availWidth  * 0.93);
+            const h    = Math.min(900,  screen.availHeight * 0.95);
+            const left = Math.round((screen.availWidth  - w) / 2);
+            const top  = Math.round((screen.availHeight - h) / 2);
+
+            const popup = window.open(
+                APP_URL,
+                'SmartWorksApp',
+                `width=${Math.round(w)},height=${Math.round(h)},` +
+                `left=${left},top=${top},` +
+                'toolbar=no,menubar=no,location=no,status=no,scrollbars=yes,resizable=yes'
+            );
+
+            /* إذا حجب المتصفح الـ popup أظهر رسالة الخطأ */
+            if (!popup || popup.closed || typeof popup.closed === 'undefined') {
+                document.getElementById('app-modal').classList.add('active');
+            }
+        }
+
+        /* ---- إغلاق المودال عند الضغط على الخلفية ---- */
+        function handleModalClick(e) {
+            if (e.target === document.getElementById('app-modal')) {
+                closeAppModal();
+            }
+        }
+
+        function closeAppModal() {
+            document.getElementById('app-modal').classList.remove('active');
+        }
+
+        function openInNewTab() {
+            window.open(APP_URL, '_blank');
+            closeAppModal();
+        }
+
+        /* إغلاق بـ ESC */
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeAppModal();
+        });
+
+        /* ============================================================
+           تهيئة AOS + GSAP + CountUp
+        ============================================================ */
+        document.addEventListener("DOMContentLoaded", function () {
+
+            AOS.init({ duration: 800, once: true, offset: 100 });
+
             const heroTl = gsap.timeline();
-            heroTl.from("#hero-badge", { opacity: 0, y: -20, duration: 0.6, ease: "power2.out" })
-                  .from("#hero-title", { opacity: 0, y: 30, duration: 0.8, ease: "power3.out" }, "-=0.4")
-                  .from("#hero-desc", { opacity: 0, y: 20, duration: 0.6, ease: "power2.out" }, "-=0.5")
-                  .from("#hero-btns", { opacity: 0, scale: 0.9, duration: 0.5, ease: "back.out(1.7)" }, "-=0.4")
-                  .from("#hero-img-box", { opacity: 0, x: 50, duration: 0.8, ease: "power2.out" }, "-=0.6")
-                  .from("#hero-stats", { opacity: 0, y: 15, duration: 0.5, onComplete: startCounters }, "-=0.3");
+            heroTl
+                .from("#hero-badge",   { opacity:0, y:-20, duration:0.6, ease:"power2.out" })
+                .from("#hero-title",   { opacity:0, y:30,  duration:0.8, ease:"power3.out" }, "-=0.4")
+                .from("#hero-desc",    { opacity:0, y:20,  duration:0.6, ease:"power2.out" }, "-=0.5")
+                .from("#hero-btns",    { opacity:0, scale:0.9, duration:0.5, ease:"back.out(1.7)" }, "-=0.4")
+                .from("#hero-img-box", { opacity:0, x:50,  duration:0.8, ease:"power2.out" }, "-=0.6")
+                .from("#hero-stats",   { opacity:0, y:15,  duration:0.5, onComplete: startCounters }, "-=0.3");
 
-            // 3. تشغيل عداد الأرقام تصاعدياً بشكل سلس عند اكتمال حركة الـ Hero
             function startCounters() {
-                const options = { decimalPlaces: 0, duration: 2.5, useEasing: true, useGrouping: true };
-                
-                const countCompanies = new countUp.CountUp('count-companies', 500, options);
-                const countCountries = new countUp.CountUp('count-countries', 15, options);
-                const countSatisfaction = new countUp.CountUp('count-satisfaction', 98, options);
-
-                if (!countCompanies.error) countCompanies.start();
-                if (!countCountries.error) countCountries.start();
-                if (!countSatisfaction.error) countSatisfaction.start();
+                const opts = { decimalPlaces:0, duration:2.5, useEasing:true, useGrouping:true };
+                const c1 = new countUp.CountUp('count-companies',   500, opts);
+                const c2 = new countUp.CountUp('count-countries',    15, opts);
+                const c3 = new countUp.CountUp('count-satisfaction', 98, opts);
+                if (!c1.error) c1.start();
+                if (!c2.error) c2.start();
+                if (!c3.error) c3.start();
             }
         });
     </script>
