@@ -6,13 +6,13 @@
     <title>Smart Works Solutions – حلول تقنية ذكية للموارد البشرية</title>
     
     <!-- ========== إضافات PWA الأساسية ========== -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#4361ee">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="SmartWorks">
-    <link rel="apple-touch-icon" href="https://your-website.com/icon-512.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="https://your-website.com/icon-512.png">
+    <link rel="apple-touch-icon" href="/Logo.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/Logo.png">
     <!-- ======================================== -->
     
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -39,7 +39,6 @@
             overflow-x:hidden;
         }
         
-        /* Navigation Style */
         nav{
             position:fixed; top:0; left:0; right:0; z-index:999; height:68px;
             background:rgba(255,255,255,.96); backdrop-filter:blur(20px);
@@ -61,7 +60,6 @@
             .nav-logo img{ width: 165px; height: 45px; }
         }
 
-        /* تنسيق زر التثبيت (يظهر فقط عند دعم PWA) */
         .install-btn {
             background: #10b981;
             color: white;
@@ -101,7 +99,7 @@
 
     <nav>
         <a href="#hero" class="nav-logo">
-            <img src="logo.png" alt="Smart Works Solutions" width="223" height="61">
+            <img src="/Logo.png" alt="Smart Works Solutions" width="223" height="61">
         </a>
         <ul class="nav-links">
             <li><a href="#hero" class="active">الرئيسية</a></li>
@@ -163,7 +161,7 @@
                 <div id="hero-img-box" class="w-full md:w-1/2 flex justify-center mt-6 md:mt-0">
                     <div class="relative w-full max-w-md md:max-w-none">
                         <div class="absolute -inset-2 bg-gradient-to-tr from-blue-500 to-indigo-500 rounded-2xl opacity-10 blur-xl"></div>
-                        <img src="hero-screenshot.png" alt="Smart Works Dashboard" class="relative rounded-xl shadow-xl border border-slate-100 w-full h-auto object-cover">
+                        <img src="/hero-screenshot.png" alt="Smart Works Dashboard" class="relative rounded-xl shadow-xl border border-slate-100 w-full h-auto object-cover">
                     </div>
                 </div>
 
@@ -340,7 +338,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.8.0/countUp.umd.js"></script>
 
     <script>
-        // Service Worker لتشغيل PWA وامكانية التثبيت
+        // تسجيل Service Worker لتشغيل PWA
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js').then(reg => {
@@ -351,12 +349,11 @@
             });
         }
 
-        // متغير لحفظ حدث التثبيت
+        // زر تثبيت التطبيق (يظهر للمستخدم)
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            // اضافة زر تثبيت اختياري في navbar
             const navDiv = document.querySelector('nav div:last-child');
             if(navDiv && !document.getElementById('installPwaBtn')) {
                 const installBtn = document.createElement('button');
@@ -376,11 +373,10 @@
             }
         });
 
-        // دالة فتح رابط التطبيق مع تحسين PWA (عند ضغط "دخول التطبيق")
+        // زر "دخول التطبيق" - يفتح رابط التطبيق الفعلي
         document.getElementById('loginBtn').addEventListener('click', (e) => {
             e.preventDefault();
             const appUrl = "https://script.google.com/macros/s/AKfycbxIpcVpae_hXM8ABQ4boZFjIIbBLejW7HXizDa0OlOVppJ8xuAhyTUi4b1OTx8J07ngLw/exec";
-            // محاولة فتح التطبيق بنفس النافذة (كـ PWA)
             window.location.href = appUrl;
         });
 
