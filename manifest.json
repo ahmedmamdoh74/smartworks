@@ -1,14 +1,12 @@
 {
-  "name": "Smart Works Solutions",
+  "name": "Smart Works Solutions – حلول تقنية ذكية للموارد البشرية",
   "short_name": "SmartWorks",
   "start_url": "https://script.google.com/macros/s/AKfycbxIpcVpae_hXM8ABQ4boZFjIIbBLejW7HXizDa0OlOVppJ8xuAhyTUi4b1OTx8J07ngLw/exec",
   "display": "standalone",
   "theme_color": "#4361ee",
+  "background_color": "#f4f6fb",
   "icons": [
-    {
-      "src": "https://your-website.com/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
   ]
 }
