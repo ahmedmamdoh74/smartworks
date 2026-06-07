@@ -80,78 +80,79 @@
             <li><a href="#how-it-works">كيف نعمل</a></li>
             <li><a href="#pricing">الأسعار</a></li>
         </ul>
-        <!-- استبدل زر دخول التطبيق بهذا الكود -->
+        
+<!-- زر دخول التطبيق -->
 <button class="nav-btn" onclick="openAppModal()">
   <i class="fa-solid fa-right-to-bracket ml-2"></i>دخول التطبيق
 </button>
 
-<!-- النافذة المنبثقة -->
-<div id="app-modal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.85); align-items:center; justify-content:center;">
-  <div style="position:relative; width:100%; height:100%; background:#fff;">
-    
-    <!-- شريط علوي مخصص بديل -->
-    <div style="position:absolute; top:0; left:0; right:0; height:48px; background:#4361ee; display:flex; align-items:center; justify-content:space-between; padding:0 20px; z-index:10;">
-      <span style="color:#fff; font-family:'Tajawal',sans-serif; font-weight:700; font-size:15px;">Smart Works Solutions</span>
-      <button onclick="closeAppModal()" style="background:rgba(255,255,255,0.2); border:none; color:#fff; width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center;">✕</button>
-    </div>
-
-    <!-- الـ iframe مع إخفاء شريط Apps Script -->
-    <iframe 
-      id="app-frame"
-      src="about:blank"
-      style="position:absolute; top:0; left:0; width:100%; height:100%; border:none; padding-top:48px; box-sizing:border-box;"
-      allow="camera; microphone; geolocation"
-    ></iframe>
-
-    <!-- طبقة تغطي شريط Apps Script العلوي -->
-    <div id="cover-bar" style="position:absolute; top:48px; left:0; right:0; height:42px; background:#f8f9fa; z-index:5; border-bottom:1px solid #e2e8f0; display:flex; align-items:center; padding:0 16px;">
-      <span style="font-family:'Tajawal',sans-serif; font-size:13px; color:#6b7280;">
-        <i class="fa-solid fa-shield-halved" style="color:#4361ee; margin-left:6px;"></i>
-        اتصال آمن ومشفر
-      </span>
-    </div>
-
-  </div>
+<!-- النافذة المنبثقة - Overlay فقط بدون iframe -->
+<div id="app-modal" style="display:none; position:fixed; inset:0; z-index:9999;">
+  <!-- خلفية شفافة للإغلاق -->
+  <div onclick="closeAppModal()" style="position:absolute; inset:0; background:rgba(0,0,0,0.5);"></div>
 </div>
 
 <script>
-const APP_URL = 'https://script.google.com/macros/s/AKfycbxIpcVpae_hXM8ABQ4boZFjIIbBLejW7HXizDa0OlOVppJ8xuAhyTUi4b1OTx8J07ngLw/exec'; // ← ضع رابط تطبيقك هنا
+const APP_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+
+let appWindow = null;
 
 function openAppModal() {
-  const modal = document.getElementById('app-modal');
-  const frame = document.getElementById('app-frame');
-  
-  modal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  
-  // تحميل الرابط بعد فتح المودال
-  if (frame.src === 'about:blank') {
-    frame.src = APP_URL;
+  // حسابات حجم النافذة المنبثقة
+  const w = Math.min(1200, screen.availWidth * 0.92);
+  const h = screen.availHeight * 0.94;
+  const left = (screen.availWidth - w) / 2;
+  const top  = (screen.availHeight - h) / 2;
+
+  // فتح نافذة منبثقة نظيفة بدون شريط عنوان URL
+  appWindow = window.open(
+    APP_URL,
+    'SmartWorksApp',
+    `width=${Math.round(w)},height=${Math.round(h)},left=${Math.round(left)},top=${Math.round(top)},` +
+    'toolbar=no,menubar=no,location=no,status=no,scrollbars=yes,resizable=yes'
+  );
+
+  // إذا حجب المتصفح الـ popup أظهر رسالة توضيحية
+  if (!appWindow || appWindow.closed || typeof appWindow.closed === 'undefined') {
+    showPopupBlockedMsg();
   }
-  
-  // محاولة إخفاء شريط Apps Script عند تحميل الـ iframe
-  frame.onload = function() {
-    try {
-      const doc = frame.contentDocument || frame.contentWindow.document;
-      const style = doc.createElement('style');
-      style.textContent = '.script-app-notice, .apps-script-banner, [data-value="notice"] { display: none !important; }';
-      doc.head.appendChild(style);
-    } catch(e) {
-      // cross-origin — نعتمد على طبقة التغطية بدلاً من ذلك
-    }
-  };
+}
+
+function showPopupBlockedMsg() {
+  const modal = document.getElementById('app-modal');
+  modal.style.display = 'block';
+  modal.innerHTML = `
+    <div onclick="closeAppModal()" style="position:absolute;inset:0;background:rgba(0,0,0,0.6);"></div>
+    <div style="
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      background:#fff; border-radius:16px; padding:32px 28px; max-width:400px; width:90%;
+      text-align:center; font-family:'Tajawal',sans-serif; direction:rtl; z-index:1;
+    ">
+      <div style="font-size:48px; margin-bottom:12px;">🚫</div>
+      <h3 style="font-size:18px; font-weight:700; color:#1a1d2e; margin-bottom:10px;">تم حجب النافذة المنبثقة</h3>
+      <p style="font-size:14px; color:#5a607a; line-height:1.7; margin-bottom:20px;">
+        يرجى السماح بالنوافذ المنبثقة من إعدادات المتصفح للموقع الحالي، ثم اضغط الزر أدناه مجدداً.
+      </p>
+      <button onclick="closeAppModal(); openAppModal();" style="
+        background:#4361ee; color:#fff; border:none; border-radius:10px;
+        padding:12px 28px; font-size:15px; font-weight:700; cursor:pointer;
+        font-family:'Tajawal',sans-serif; width:100%;
+      ">حاول مرة أخرى</button>
+      <button onclick="window.open('${APP_URL}','_blank')" style="
+        background:#f4f6fb; color:#4361ee; border:1px solid #4361ee; border-radius:10px;
+        padding:12px 28px; font-size:15px; font-weight:700; cursor:pointer;
+        font-family:'Tajawal',sans-serif; width:100%; margin-top:10px;
+      ">فتح في تبويب جديد</button>
+    </div>
+  `;
 }
 
 function closeAppModal() {
   const modal = document.getElementById('app-modal');
   modal.style.display = 'none';
-  document.body.style.overflow = '';
 }
 
-// إغلاق بضغط ESC
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeAppModal();
-});
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeAppModal(); });
 </script>
     </nav>
 
